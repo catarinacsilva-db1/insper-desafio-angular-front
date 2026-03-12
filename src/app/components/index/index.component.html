@@ -1,4 +1,4 @@
-    <div>
+    <div *ngIf="usuariosList.length > 0; else semUsuarios">
         <table class="table table-striped table-bordered">
             <thead>
                 <tr class="text-center">
@@ -11,16 +11,22 @@
                 </tr>
             </thead>
             <tbody>
-                    <tr *ngFor="let u of usuarios">
-                        <td>{{u.nome}}</td>
-                        <td>{{u.sobrenome}}</td>
-                        <td>{{u.nomeSocial}}</td>
-                        <td class="text-center">{{u.dataNascimento | date:'dd/MM/yyyy'}}</td>
-                        <td class="cpf text-center">{{u.cpf}}</td>
+                    <tr *ngFor="let u of usuariosList">
+                        <td>{{u.Nome}}</td>
+                        <td>{{u.Sobrenome}}</td>
+                        <td>{{u.NomeSocial}}</td>
+                        <td class="text-center">{{u.DataNascimento | date:'dd/MM/yyyy'}}</td>
+                        <td class="cpf text-center">{{u.Cpf}}</td>
 
                          <td class="col-2 text-center">
-                          <button (click)="alteraStatus(u)" [title]="u.ativo ? 'Inativar Usuário' : 'Ativar Usuário'">
-                            <i [ngClass]="u.ativo ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-secondary'"></i>
+                          <button type="button" class="btn btn-default" (click)="toggleModalConfirmaStatus(u.Id)" [title]="u.Ativo ? 'Inativar Usuário' : 'Ativar Usuário'" [attr.aria-label]="u.Ativo ? 'Inativar Usuário' : 'Ativar Usuário'">
+                            <i [ngClass]="u.Ativo ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-secondary'"></i>
+                          </button>
+                          <button type="button" class="btn btn-default" (click)="editar(u)" title="Editar Usuário">
+                            <i class="bi bi-pencil"></i>
+                          </button>
+                          <button type="button" class="btn btn-default" (click)="toggleModalConfirmaExcluir(u.Id)" title="Excluir Usuário">
+                            <i class="bi bi-trash"></i>
                           </button>
                         <!--    <a href="@Url.Action("AtualizarStatus", "UsuarioCrud", new { id = user.Id })" title="@(user.Ativo ? "Inativar Usuário" : "Ativar Usuário")" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#confirmaStatus@(user.Id)">
                                 <i class="@(user.Ativo ? "bi bi-check-circle-fill text-success" : "bi bi-x-circle-fill text-secondary")"></i>
@@ -33,18 +39,14 @@
                             </a>-->
                         </td>
                     </tr>
-                    @Html.Partial("_ConfirmarDeletar", user)
-                    @Html.Partial("_ConfirmarStatus", user)
+
             </tbody>
         </table>
     </div>
-
-<!-- else
-{
+  <ng-template #semUsuarios>
     <div>
-        @Html.Label("", "Nenhum usuário cadastrado.", new { @class = "form-label" })
+        <p>Não há usuários cadastrados.</p>
     </div>
-}
-
-<a href="@Url.Action("Cadastrar", "UsuarioCrud")" class="btn btn-primary">Cadastrar</a> -->
+  </ng-template>
+  <a class="btn btn-primary">Cadastrar</a>
 

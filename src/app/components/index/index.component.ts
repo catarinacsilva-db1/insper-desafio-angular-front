@@ -1,3 +1,4 @@
+import { IUsuario, UsuarioService } from './../../service/usuario.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,49 +6,30 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
+
 export class IndexComponent implements OnInit {
 
-    usuarios = [
-      {
-        ativo: true,
-        nome: 'Teste',
-        sobrenome: 'Da Silva',
-        nomeSocial: '',
-        dataNascimento: new Date(),
-        cpf: '123.456.789-00'
-      },
-      {
-        ativo: true,
-        nome: 'João',
-        sobrenome: 'Santos',
-        nomeSocial: '',
-        dataNascimento: new Date(),
-        cpf: '987.654.321-11'
-      },
-      {
-        ativo: false,
-        nome: 'Maria',
-        sobrenome: 'Oliveira',
-        nomeSocial: '',
-        dataNascimento: new Date(),
-        cpf: '456.789.123-22'
-      }
-    ];
+  usuariosList: IUsuario[] = [];
 
-  constructor() { }
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
+    this.listarUsuarios();
   }
 
-  editar(){}
-  excluir(){}
-  alteraStatus(usuario: any){
-    usuario.ativo = !usuario.ativo;
-  }
-  
+listarUsuarios(){
+      this.usuarioService.getListaUsuarios().subscribe((usuarios) => {
+      this.usuariosList = usuarios;
+    });
+}
+
+
 //implementar chamado ao componente modal
   toggleModalConfirmaExcluir(usuario: any){
   }
-  toggleModalConfirmaStatus(usuario: any){
+  toggleModalConfirmaStatus(id: number){
+    this.usuarioService.atualizaStatusUsuario(id).subscribe(() => {
+      this.listarUsuarios();
+    });
   }
 }

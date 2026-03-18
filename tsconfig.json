@@ -21,7 +21,9 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "types": ["jquery",
+      "bootstrap"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -1,5 +1,7 @@
-import { IUsuario, UsuarioService } from './../../service/usuario.service';
-import { Component, OnInit } from '@angular/core';
+import { IUsuario } from 'src/app/service/interfaces/IUsuario';
+import { UsuarioService } from './../../service/usuario.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalStatusUsuarioComponent } from './modal-status-usuario/modal-status-usuario.component';
 
 @Component({
   selector: 'app-index',
@@ -8,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class IndexComponent implements OnInit {
+   @ViewChild(ModalStatusUsuarioComponent) modalStatus!: ModalStatusUsuarioComponent;
 
   usuariosList: IUsuario[] = [];
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(
+    private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.listarUsuarios();
@@ -23,13 +27,18 @@ listarUsuarios(){
     });
 }
 
+openModalStatus(usuario: IUsuario){
+   this.modalStatus.usuario = {
+    Id: usuario.Id,
+    Ativo: usuario.Ativo,
+    Nome: usuario.Nome,
+    Sobrenome: usuario.Sobrenome
+  };
+  this.modalStatus.abrir();
+}
 
-//implementar chamado ao componente modal
-  toggleModalConfirmaExcluir(usuario: any){
-  }
-  toggleModalConfirmaStatus(id: number){
-    this.usuarioService.atualizaStatusUsuario(id).subscribe(() => {
-      this.listarUsuarios();
-    });
-  }
+
+getTitle(status: boolean): string {
+  return status ? 'Inativar Usuário' : 'Ativar Usuário';
+}
 }

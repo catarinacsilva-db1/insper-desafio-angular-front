@@ -1,7 +1,9 @@
 import { IUsuario } from 'src/app/service/interfaces/IUsuario';
 import { UsuarioService } from './../../service/usuario.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalStatusUsuarioComponent } from './modal-status-usuario/modal-status-usuario.component';
+import { ModalConfirmacaoUsuarioComponent } from './modal-confirmacao-usuario/modal-confirmacao-usuario.component';
+import { IUsuarioModal } from 'src/app/service/interfaces/IUsuarioModal';
+
 
 @Component({
   selector: 'app-index',
@@ -10,35 +12,69 @@ import { ModalStatusUsuarioComponent } from './modal-status-usuario/modal-status
 })
 
 export class IndexComponent implements OnInit {
-   @ViewChild(ModalStatusUsuarioComponent) modalStatus!: ModalStatusUsuarioComponent;
+     @ViewChild('modalStatus') modalStatus!: ModalConfirmacaoUsuarioComponent;
+     @ViewChild('modalExcluir') modalExcluir!: ModalConfirmacaoUsuarioComponent;
 
-  usuariosList: IUsuario[] = [];
+    usuariosList: IUsuario[] = [];
+    usuarioModal: IUsuarioModal = {
+      Id: 0,
+      Ativo: false,
+      Nome: '',
+      Sobrenome: ''
+    };
 
-  constructor(
-    private usuarioService: UsuarioService) { }
+    constructor(
+      private usuarioService: UsuarioService) { }
 
-  ngOnInit(): void {
-    this.listarUsuarios();
+    ngOnInit(): void {
+      this.listarUsuarios();
+    }
+
+  listarUsuarios(){
+        this.usuarioService.getListaUsuarios().subscribe((usuarios) => {
+        this.usuariosList = usuarios;
+      });
   }
 
-listarUsuarios(){
-      this.usuarioService.getListaUsuarios().subscribe((usuarios) => {
-      this.usuariosList = usuarios;
-    });
-}
 
-openModalStatus(usuario: IUsuario){
-   this.modalStatus.usuario = {
-    Id: usuario.Id,
-    Ativo: usuario.Ativo,
-    Nome: usuario.Nome,
-    Sobrenome: usuario.Sobrenome
-  };
-  this.modalStatus.abrir();
-}
+  buscaTituloBotaoStatus(status: boolean): string {
+    return status ? 'Inativar Usuário' : 'Ativar Usuário';
+  }
 
+  abreModalStatus(usuario: IUsuario){
+    this.atribuiUsuarioModal(usuario);
+    this.modalStatus.abrir();
+  }
 
-getTitle(status: boolean): string {
-  return status ? 'Inativar Usuário' : 'Ativar Usuário';
-}
+  abreModalExcluir(usuario: IUsuario){
+    this.atribuiUsuarioModal(usuario);
+    this.modalExcluir.abrir();
+  }
+
+  atualizarStatusUsuario(){
+    if (this.usuarioModal.Id) {
+        this.usuarioService.atualizaStatusUsuario(this.usuarioModal.Id).subscribe(() => {
+        this.listarUsuarios();
+         });
+    }
+    this.modalStatus.fechar();
+  }
+
+    excluirUsuario(){
+    if (this.usuarioModal.Id) {
+        this.usuarioService.deletarUsuario(this.usuarioModal.Id).subscribe(() => {
+        this.listarUsuarios();
+         });
+    }
+    this.modalExcluir.fechar();
+  }
+
+  private atribuiUsuarioModal(usuario: IUsuario) {
+      this.usuarioModal = {
+      Id: usuario.Id,
+      Ativo: usuario.Ativo,
+      Nome: usuario.Nome,
+      Sobrenome: usuario.Sobrenome
+    };
+  }
 }

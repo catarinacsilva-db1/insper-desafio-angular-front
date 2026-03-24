@@ -5,16 +5,22 @@ import Modal from 'bootstrap/js/dist/modal';
 
 
 @Component({
-  selector: 'app-modal-status-usuario',
-  templateUrl: './modal-status-usuario.component.html',
-  styleUrls: ['./modal-status-usuario.component.css']
+  selector: 'app-modal-confirmacao-usuario',
+  templateUrl: './modal-confirmacao-usuario.component.html',
+  styleUrls: ['./modal-confirmacao-usuario.component.css']
 })
 
-export class ModalStatusUsuarioComponent implements OnInit {
-    @ViewChild('modalStatus') modalStatus!: ElementRef;
+export class ModalConfirmacaoUsuarioComponent implements OnInit {
+    @ViewChild('modalConfirmacao') modalConfirmacao!: ElementRef;
     private modal!: Modal;
 
-  @Output() statusAtualizado = new EventEmitter<void>();
+  @Output() confirmar = new EventEmitter<void>();
+
+  //criar interface para receber dados de modal
+  @Input() titulo: string = '';
+  @Input() corpo: string = '';
+  @Input() textoBotaoConfirmar: string = 'Confirmar';
+
   @Input() usuario: IUsuarioModal = {
     Id: 0,
     Ativo: false,
@@ -29,26 +35,19 @@ export class ModalStatusUsuarioComponent implements OnInit {
   }
 
    ngAfterViewInit(): void {
-    this.modal = new Modal(this.modalStatus.nativeElement);
+    this.modal = new Modal(this.modalConfirmacao.nativeElement);
    }//entender ciclos de vida angular
 
-  atualizarStatusUsuario(id: number){
-    if (this.usuario.Id) {
-        this.usuarioService.atualizaStatusUsuario(id).subscribe(() => {
-          this.usuario.Ativo = !this.usuario.Ativo;
-          this.statusAtualizado.emit();
-        });
-    }
-    this.fechar();
-  }
 
   abrir(){
-
     this.modal.show();
   }
 
   fechar(){
-
     this.modal.hide();
+  }
+
+  executar(){
+    this.confirmar.emit();
   }
 }

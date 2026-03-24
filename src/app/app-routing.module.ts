@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './components/index/index.component';
-import { ModalStatusUsuarioComponent } from './components/index/modal-status-usuario/modal-status-usuario.component';
+import { ModalConfirmacaoUsuarioComponent } from './components/index/modal-confirmacao-usuario/modal-confirmacao-usuario.component';
 
 const routes: Routes = [
 {path: 'index', component: IndexComponent,
   children: [
-    {path: 'status/:id', component: ModalStatusUsuarioComponent}
+    {path: 'status/:id', component: ModalConfirmacaoUsuarioComponent}
   ]
 },
 ];

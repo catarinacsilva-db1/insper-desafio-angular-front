@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import { UsuarioService } from '../../../service/usuario.service';
 import { IUsuarioModal } from 'src/app/service/interfaces/IUsuarioModal';
 import Modal from 'bootstrap/js/dist/modal';
+import { IConteudoModal } from 'src/app/service/constantes/conteudoModal';
 
 
 @Component({
@@ -16,10 +17,7 @@ export class ModalConfirmacaoUsuarioComponent implements OnInit {
 
   @Output() confirmar = new EventEmitter<void>();
 
-  //criar interface para receber dados de modal
-  @Input() titulo: string = '';
-  @Input() corpo: string = '';
-  @Input() textoBotaoConfirmar: string = 'Confirmar';
+  @Input() conteudo!: IConteudoModal;
 
   @Input() usuario: IUsuarioModal = {
     Id: 0,

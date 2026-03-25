@@ -18,10 +18,7 @@
                         <td class="text-center">{{u.DataNascimento | date:'dd/MM/yyyy'}}</td>
                         <td class="cpf text-center">{{u.Cpf}}</td>
                          <td class="col-2 text-center">
-
                           <button type="button" class="btn btn-default" (click)="abreModalStatus(u)" [title]="buscaTituloBotaoStatus(u.Ativo)" [attr.aria-label]="buscaTituloBotaoStatus(u.Ativo)">
-
-
                             <i [ngClass]="u.Ativo ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-secondary'"></i>
                           </button>
                           <button type="button" class="btn btn-default" [routerLink]="['/editar', u.Id]" title="Editar Usuário">
@@ -30,15 +27,6 @@
                           <button type="button" class="btn btn-default" (click)="abreModalExcluir(u)" title="Excluir Usuário">
                             <i class="bi bi-trash"></i>
                           </button>
-                        <!--    <a href="@Url.Action("AtualizarStatus", "UsuarioCrud", new { id = user.Id })" title="@(user.Ativo ? "Inativar Usuário" : "Ativar Usuário")" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#confirmaStatus@(user.Id)">
-                                <i class="@(user.Ativo ? "bi bi-check-circle-fill text-success" : "bi bi-x-circle-fill text-secondary")"></i>
-                            </a>
-                            <a href="@Url.Action("Editar", "UsuarioCrud", new { id = user.Id })" class="btn btn-default">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                            <a href="@Url.Action("Deletar", "UsuarioCrud", new { id = user.Id })" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#confirmaDeletar@(user.Id)">
-                                <i class="bi bi-trash"></i>
-                            </a>-->
                         </td>
                     </tr>
 
@@ -54,16 +42,13 @@
 
   <app-modal-confirmacao-usuario
     #modalStatus
-    [titulo]="'Alteração de Status'"
-    [corpo]="'Deseja alterar o status do usuário ' + usuarioModal.Nome + ' ' + usuarioModal.Sobrenome + ' para ' + (usuarioModal.Ativo ? 'Inativo' : 'Ativo') + '?'"
-    [textoBotaoConfirmar]="'Alterar'"
+    [conteudo]="conteudoModal"
     (confirmar)="atualizarStatusUsuario()">
-  ></app-modal-confirmacao-usuario>
-    <app-modal-confirmacao-usuario
+  </app-modal-confirmacao-usuario>
+
+  <app-modal-confirmacao-usuario
     #modalExcluir
-    [titulo]="'Confirmação de Exclusão'"
-    [corpo]="'Deseja excluir o usuário ' + usuarioModal.Nome + ' ' + usuarioModal.Sobrenome + '? Esta ação é irreversível.'"
-    [textoBotaoConfirmar]="'Excluir'"
+    [conteudo]="conteudoModal"
     (confirmar)="excluirUsuario()">
-  ></app-modal-confirmacao-usuario>
+  </app-modal-confirmacao-usuario>
 

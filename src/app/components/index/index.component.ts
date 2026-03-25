@@ -3,6 +3,7 @@ import { UsuarioService } from './../../service/usuario.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalConfirmacaoUsuarioComponent } from './modal-confirmacao-usuario/modal-confirmacao-usuario.component';
 import { IUsuarioModal } from 'src/app/service/interfaces/IUsuarioModal';
+import { IConteudoModal, MODAL_CONFIG } from 'src/app/service/constantes/conteudoModal';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class IndexComponent implements OnInit {
      @ViewChild('modalStatus') modalStatus!: ModalConfirmacaoUsuarioComponent;
      @ViewChild('modalExcluir') modalExcluir!: ModalConfirmacaoUsuarioComponent;
 
+    conteudoModal!: IConteudoModal;
     usuariosList: IUsuario[] = [];
     usuarioModal: IUsuarioModal = {
       Id: 0,
@@ -36,18 +38,19 @@ export class IndexComponent implements OnInit {
       });
   }
 
-
   buscaTituloBotaoStatus(status: boolean): string {
     return status ? 'Inativar Usuário' : 'Ativar Usuário';
   }
 
   abreModalStatus(usuario: IUsuario){
     this.atribuiUsuarioModal(usuario);
+    this.conteudoModal = MODAL_CONFIG.STATUS(usuario.Nome, usuario.Sobrenome, usuario.Ativo);
     this.modalStatus.abrir();
   }
 
   abreModalExcluir(usuario: IUsuario){
     this.atribuiUsuarioModal(usuario);
+    this.conteudoModal = MODAL_CONFIG.EXCLUIR(usuario.Nome, usuario.Sobrenome);
     this.modalExcluir.abrir();
   }
 

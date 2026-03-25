@@ -19,13 +19,6 @@ export class ModalConfirmacaoUsuarioComponent implements OnInit {
 
   @Input() conteudo!: IConteudoModal;
 
-  @Input() usuario: IUsuarioModal = {
-    Id: 0,
-    Ativo: false,
-    Nome: '',
-    Sobrenome: ''
-  };
-
   constructor(
     private usuarioService: UsuarioService) { }
 

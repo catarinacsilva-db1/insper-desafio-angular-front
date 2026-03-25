@@ -18,12 +18,7 @@ export class IndexComponent implements OnInit {
 
     conteudoModal!: IConteudoModal;
     usuariosList: IUsuario[] = [];
-    usuarioModal: IUsuarioModal = {
-      Id: 0,
-      Ativo: false,
-      Nome: '',
-      Sobrenome: ''
-    };
+    usuarioModal!: IUsuarioModal;
 
     constructor(
       private usuarioService: UsuarioService) { }
@@ -44,14 +39,14 @@ export class IndexComponent implements OnInit {
 
   abreModalStatus(usuario: IUsuario){
     this.atribuiUsuarioModal(usuario);
-    this.conteudoModal = MODAL_CONFIG.STATUS(usuario.Nome, usuario.Sobrenome, usuario.Ativo);
-    this.modalStatus.abrir();
+    this.conteudoModal = MODAL_CONFIG.STATUS(this.usuarioModal.Nome, this.usuarioModal.Sobrenome, this.usuarioModal.Ativo);
+    setTimeout(() => this.modalStatus.abrir(), 0);
   }
 
   abreModalExcluir(usuario: IUsuario){
     this.atribuiUsuarioModal(usuario);
-    this.conteudoModal = MODAL_CONFIG.EXCLUIR(usuario.Nome, usuario.Sobrenome);
-    this.modalExcluir.abrir();
+    this.conteudoModal = MODAL_CONFIG.EXCLUIR(this.usuarioModal.Nome, this.usuarioModal.Sobrenome);
+    setTimeout(() => this.modalExcluir.abrir(), 0);
   }
 
   atualizarStatusUsuario(){
@@ -63,7 +58,7 @@ export class IndexComponent implements OnInit {
     this.modalStatus.fechar();
   }
 
-    excluirUsuario(){
+  excluirUsuario(){
     if (this.usuarioModal.Id) {
         this.usuarioService.deletarUsuario(this.usuarioModal.Id).subscribe(() => {
         this.listarUsuarios();

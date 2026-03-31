@@ -1,0 +1,39 @@
+<div class="container">
+<h1>Cadastrar Usuário</h1>
+    <div class="row">
+        <div class="col-md-6 ab-3">
+          <label for="NomeUsuario" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="NomeUsuario" name="NomeUsuario" required>
+        </div>
+        <div class="col-md-6 ab-3">
+          <label for="SobrenomeUsuario" class="form-label">Sobrenome</label>
+          <input type="text" class="form-control" id="SobrenomeUsuario" name="SobrenomeUsuario" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 ab-3">
+          <label for="NomeSocialUsuario" class="form-label">Nome Social</label>
+          <input type="text" class="form-control" id="NomeSocialUsuario" name="NomeSocialUsuario">
+        </div>
+        <div class="col-md-6 ab-3">
+          <label for="DataNascimentoUsuario" class="form-label">Data de Nascimento</label>
+          <input type="date" class="form-control" id="DataNascimentoUsuario" name="DataNascimentoUsuario" required>
+        </div>
+        <div class="col-md-6 ab-3"> <!-- adicionar mascara de cpf -->
+          <label for="CpfUsuario" class="form-label">CPF</label>
+          <input type="text" class="form-control cpf" id="CpfUsuario" name="CpfUsuario" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 ab-3">
+          <label for="SenhaUsuario" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="SenhaUsuario" name="SenhaUsuario" required>
+          <!-- Componente de texto com requisito de senha -->
+        </div>
+    </div>
+
+    <section class="m-3">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a class="btn btn-default" [routerLink]="['/tabela-usuario']">Voltar</a>
+    </section>
+  </div>

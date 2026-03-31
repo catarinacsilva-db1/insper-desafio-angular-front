@@ -17,26 +17,16 @@
                         <td>{{u.NomeSocial}}</td>
                         <td class="text-center">{{u.DataNascimento | date:'dd/MM/yyyy'}}</td>
                         <td class="cpf text-center">{{u.Cpf}}</td>
-
                          <td class="col-2 text-center">
-                          <button type="button" class="btn btn-default" (click)="toggleModalConfirmaStatus(u.Id)" [title]="u.Ativo ? 'Inativar Usuário' : 'Ativar Usuário'" [attr.aria-label]="u.Ativo ? 'Inativar Usuário' : 'Ativar Usuário'">
+                          <button type="button" class="btn btn-default" (click)="abreModalStatus(u)" [title]="buscaTituloBotaoStatus(u.Ativo)" [attr.aria-label]="buscaTituloBotaoStatus(u.Ativo)">
                             <i [ngClass]="u.Ativo ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-secondary'"></i>
                           </button>
-                          <button type="button" class="btn btn-default" (click)="editar(u)" title="Editar Usuário">
+                          <button type="button" class="btn btn-default" [routerLink]="['/editar', u.Id]" title="Editar Usuário">
                             <i class="bi bi-pencil"></i>
                           </button>
-                          <button type="button" class="btn btn-default" (click)="toggleModalConfirmaExcluir(u.Id)" title="Excluir Usuário">
+                          <button type="button" class="btn btn-default" (click)="abreModalExcluir(u)" title="Excluir Usuário">
                             <i class="bi bi-trash"></i>
                           </button>
-                        <!--    <a href="@Url.Action("AtualizarStatus", "UsuarioCrud", new { id = user.Id })" title="@(user.Ativo ? "Inativar Usuário" : "Ativar Usuário")" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#confirmaStatus@(user.Id)">
-                                <i class="@(user.Ativo ? "bi bi-check-circle-fill text-success" : "bi bi-x-circle-fill text-secondary")"></i>
-                            </a>
-                            <a href="@Url.Action("Editar", "UsuarioCrud", new { id = user.Id })" class="btn btn-default">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                            <a href="@Url.Action("Deletar", "UsuarioCrud", new { id = user.Id })" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#confirmaDeletar@(user.Id)">
-                                <i class="bi bi-trash"></i>
-                            </a>-->
                         </td>
                     </tr>
 
@@ -48,5 +38,17 @@
         <p>Não há usuários cadastrados.</p>
     </div>
   </ng-template>
-  <a class="btn btn-primary">Cadastrar</a>
+  <a class="btn btn-primary" [routerLink]="['/cadastrar']">Cadastrar</a>
+
+  <app-modal-confirmacao-usuario
+    #modalStatus
+    [conteudo]="conteudoModal"
+    (confirmar)="atualizarStatusUsuario()">
+  </app-modal-confirmacao-usuario>
+
+  <app-modal-confirmacao-usuario
+    #modalExcluir
+    [conteudo]="conteudoModal"
+    (confirmar)="excluirUsuario()">
+  </app-modal-confirmacao-usuario>
 

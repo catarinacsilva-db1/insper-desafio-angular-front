@@ -1,9 +1,9 @@
-import { IUsuario } from 'src/app/service/interfaces/IUsuario';
-import { UsuarioService } from './../../service/usuario.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalConfirmacaoUsuarioComponent } from './modal-confirmacao-usuario/modal-confirmacao-usuario.component';
-import { IUsuarioModal } from 'src/app/service/interfaces/IUsuarioModal';
 import { IConteudoModal, MODAL_CONFIG } from 'src/app/service/constantes/conteudoModal';
+import { IUsuario } from 'src/app/service/interfaces/IUsuario';
+import { IUsuarioModal } from 'src/app/service/interfaces/IUsuarioModal';
+import { UsuarioService } from './../../service/usuario.service';
+import { ModalConfirmacaoUsuarioComponent } from './modal-confirmacao-usuario/modal-confirmacao-usuario.component';
 
 
 @Component({

@@ -5,21 +5,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FiltroPesquisaComponent } from './components/index/filtro-pesquisa/filtro-pesquisa.component';
+import { TabelaUsuarioComponent } from './components/tabela-usuario/tabela-usuario.component';
+import { ModalConfirmacaoUsuarioComponent } from './components/tabela-usuario/modal-confirmacao-usuario/modal-confirmacao-usuario.component';
+import { Router, RouterModule } from '@angular/router';
+import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
 import { IndexComponent } from './components/index/index.component';
-import { ModalConfirmacaoUsuarioComponent } from './components/index/modal-confirmacao-usuario/modal-confirmacao-usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
-    FiltroPesquisaComponent,
-    ModalConfirmacaoUsuarioComponent
+    TabelaUsuarioComponent,
+    ModalConfirmacaoUsuarioComponent,
+    CadastroUsuarioComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    RouterModule,
     ReactiveFormsModule
   ],
   providers: [],

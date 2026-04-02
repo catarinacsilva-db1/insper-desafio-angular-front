@@ -34,12 +34,12 @@ export class CadastroUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
-      nome: ['', [Validators.required]],
-      sobrenome: ['', [Validators.required]],
-      nomeSocial: [''],
-      dataNascimento: ['', [Validators.required]],
-      cpf: ['', [Validators.required]],
-      senha: ['', [Validators.required]]
+      Nome: ['', [Validators.required]],
+      Sobrenome: ['', [Validators.required]],
+      NomeSocial: [''],
+      DataNascimento: ['', [Validators.required]],
+      Cpf: ['', [Validators.required]],
+      Senha: ['', [Validators.required]]
     });
   }
 
@@ -53,12 +53,23 @@ export class CadastroUsuarioComponent implements OnInit {
   }
 
   cadastrarUsuario(){
-    if (this.formulario.valid && this.usuario) {
-      // this.usuarioService.criarUsuario(this.usuario).subscribe(() => {
+    if (this.formulario.valid) {
+      this.atribuiUsuario();
+      this.usuarioService.criarUsuario(this.usuario).subscribe(() => {
+        this.router.navigate(['/']);
         alert('Usuário cadastrado com sucesso!');
-      // });
+      });
     } else {
       alert('Por favor, preencha todos os campos obrigatórios.');
     }
+  }
+
+  atribuiUsuario(): void {
+    this.usuario.Nome = this.formulario.get('Nome')?.value;
+    this.usuario.Sobrenome = this.formulario.get('Sobrenome')?.value;
+    this.usuario.NomeSocial = this.formulario.get('NomeSocial')?.value;
+    this.usuario.DataNascimento = this.formulario.get('DataNascimento')?.value;
+    this.usuario.Cpf = this.formulario.get('Cpf')?.value;
+    this.usuario.Senha = this.formulario.get('Senha')?.value;
   }
 }

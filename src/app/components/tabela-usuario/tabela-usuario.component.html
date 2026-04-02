@@ -16,7 +16,7 @@
                         <td>{{u.Sobrenome}}</td>
                         <td>{{u.NomeSocial}}</td>
                         <td class="text-center">{{u.DataNascimento | date:'dd/MM/yyyy'}}</td>
-                        <td class="cpf text-center">{{u.Cpf}}</td>
+                        <td class="cpf text-center" >{{u.Cpf | mask:'000.000.000-00'}}</td>
                          <td class="col-2 text-center">
                           <button type="button" class="btn btn-default" (click)="abreModalStatus(u)" [title]="buscaTituloBotaoStatus(u.Ativo)" [attr.aria-label]="buscaTituloBotaoStatus(u.Ativo)">
                             <i [ngClass]="u.Ativo ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-secondary'"></i>

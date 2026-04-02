@@ -7,15 +7,15 @@
     <div class="row">
         <div class="col-md-6 ab-3">
           <label for="nomeUsuario" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nomeUsuario" formControlName="nome">
-          <span *ngIf=" validaCampo('nome') " class="text-danger"
+          <input type="text" class="form-control" id="nomeUsuario" formControlName="Nome">
+          <span *ngIf=" validaCampo('Nome') " class="text-danger"
           >Nome é obrigatório.
           </span>
         </div>
         <div class="col-md-6 ab-3">
           <label for="sobrenomeUsuario" class="form-label">Sobrenome</label>
-          <input type="text" class="form-control" id="sobrenomeUsuario" formControlName="sobrenome">
-          <span *ngIf=" validaCampo('sobrenome') " class="text-danger"
+          <input type="text" class="form-control" id="sobrenomeUsuario" formControlName="Sobrenome">
+          <span *ngIf=" validaCampo('Sobrenome') " class="text-danger"
           >Sobrenome é obrigatório.
           </span>
         </div>
@@ -23,19 +23,24 @@
     <div class="row">
         <div class="col-md-6 ab-3">
           <label for="nomeSocialUsuario" class="form-label">Nome Social</label>
-          <input type="text" class="form-control" id="nomeSocialUsuario" formControlName="nomeSocial">
+          <input type="text" class="form-control" id="nomeSocialUsuario" formControlName="NomeSocial">
         </div>
         <div class="col-md-6 ab-3">
           <label for="dataNascimentoUsuario" class="form-label">Data de Nascimento</label>
-          <input type="date" class="form-control" id="dataNascimentoUsuario" formControlName="dataNascimento">
-          <span *ngIf=" validaCampo('dataNascimento') " class="text-danger"
+          <input type="date" class="form-control" id="dataNascimentoUsuario" formControlName="DataNascimento">
+          <span *ngIf=" validaCampo('DataNascimento') " class="text-danger"
           >Data de nascimento é obrigatória.
           </span>
         </div>
         <div class="col-md-6 ab-3"> <!-- adicionar mascara de cpf -->
           <label for="cpfUsuario" class="form-label">CPF</label>
-          <input type="text" class="form-control cpf" id="cpfUsuario" formControlName="cpf" [readonly]="usuario.Id"> <!-- se for edição vir como readonly -->
-          <span *ngIf=" validaCampo('cpf') " class="text-danger"
+          <input type="text"
+          class="form-control cpf"
+          id="cpfUsuario"
+          formControlName="Cpf"
+          mask="000.000.000-00"
+          [readonly]="usuario.Id"> <!-- se for edição vir como readonly -->
+          <span *ngIf=" validaCampo('Cpf') " class="text-danger"
           >CPF é obrigatório.
           </span>
         </div>
@@ -43,8 +48,8 @@
     <div class="row">
         <div class="col-md-6 ab-3">
           <label for="senhaUsuario" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="senhaUsuario" formControlName="senha">
-          <span *ngIf=" validaCampo('senha') " class="text-danger"
+          <input type="password" class="form-control" id="senhaUsuario" formControlName="Senha">
+          <span *ngIf=" validaCampo('Senha') " class="text-danger"
           >Senha é obrigatória.
           </span>
           <!-- Componente de texto com requisito de senha -->

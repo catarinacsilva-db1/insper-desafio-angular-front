@@ -10,6 +10,7 @@ import { ModalConfirmacaoUsuarioComponent } from './components/tabela-usuario/mo
 import { Router, RouterModule } from '@angular/router';
 import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
 import { IndexComponent } from './components/index/index.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { IndexComponent } from './components/index/index.component';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,16 +8,17 @@ import { AppComponent } from './app.component';
 import { TabelaUsuarioComponent } from './components/tabela-usuario/tabela-usuario.component';
 import { ModalConfirmacaoUsuarioComponent } from './components/tabela-usuario/modal-confirmacao-usuario/modal-confirmacao-usuario.component';
 import { Router, RouterModule } from '@angular/router';
-import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
+import { FormularioUsuarioComponent } from './components/formulario-usuario/formulario-usuario.component';
 import { IndexComponent } from './components/index/index.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     TabelaUsuarioComponent,
     ModalConfirmacaoUsuarioComponent,
-    CadastroUsuarioComponent,
+    FormularioUsuarioComponent,
     IndexComponent
   ],
   imports: [
@@ -28,7 +29,7 @@ import { NgxMaskModule } from 'ngx-mask';
     ReactiveFormsModule,
     NgxMaskModule.forRoot()
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

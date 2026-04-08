@@ -28,7 +28,7 @@ export class TabelaUsuarioComponent implements OnInit {
     }
 
   listarUsuarios(){
-        this.usuarioService.getListaUsuarios().subscribe((usuarios) => {
+        this.usuarioService.obterListaUsuarios().subscribe((usuarios) => {
         this.usuariosList = usuarios;
       });
   }

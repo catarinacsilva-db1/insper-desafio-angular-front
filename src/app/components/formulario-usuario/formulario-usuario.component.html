@@ -1,6 +1,6 @@
 <div class="container body-content">
   <header>
-    <h1>{{ titulo }}</h1>
+    <h1>{{ conteudo.titulo }}</h1>
   </header>
 <hr>
   <form [formGroup]="formulario">
@@ -39,7 +39,7 @@
           id="cpfUsuario"
           formControlName="Cpf"
           mask="000.000.000-00"
-          [readonly]="usuario.Id"> <!-- se for edição vir como readonly -->
+          [readonly]="ehEdicao()"> <!-- se for edição vir como readonly -->
           <span *ngIf=" validaCampo('Cpf') " class="text-danger"
           >CPF é obrigatório.
           </span>
@@ -60,7 +60,7 @@
         <button type="submit"
         class="btn btn-primary"
         [disabled]="!formulario.valid"
-        (click)="cadastrarUsuario()">Cadastrar</button>
+        (click)="confirmar()">{{conteudo.textoBotaoConfirmar}}</button>
         <a class="btn btn-default" [routerLink]="['/index']">Voltar</a>
     </section>
   </form>

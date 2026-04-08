@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CadastroUsuarioComponent } from './cadastro-usuario.component';
+import { CadastroUsuarioComponent } from './formulario-usuario.component';
 
 describe('CadastroUsuarioComponent', () => {
   let component: CadastroUsuarioComponent;

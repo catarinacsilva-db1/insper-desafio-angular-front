@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
+import { FormularioUsuarioComponent } from './components/formulario-usuario/formulario-usuario.component';
 import { IndexComponent } from './components/index/index.component';
 
 const routes: Routes = [
@@ -8,7 +8,9 @@ const routes: Routes = [
 },
 {path: '', redirectTo: 'index', pathMatch: 'full'
 },
-{path: 'cadastrar', component: CadastroUsuarioComponent}
+{path: 'cadastrar', component: FormularioUsuarioComponent
+},
+{path: 'editar/:id', component: FormularioUsuarioComponent}
 ];
 
 @NgModule({

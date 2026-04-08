@@ -1,0 +1,132 @@
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FORM_CONFIG, IConteudoForm } from 'src/app/service/constantes/conteudoFormulario';
+import { IUsuario } from 'src/app/service/interfaces/IUsuario';
+import { UsuarioService } from 'src/app/service/usuario.service';
+
+@Component({
+  selector: 'app-cadastro-usuario',
+  templateUrl: './formulario-usuario.component.html',
+  styleUrls: ['./formulario-usuario.component.css']
+})
+export class FormularioUsuarioComponent implements OnInit {
+
+  conteudo!: IConteudoForm;
+
+  usuario: IUsuario = {
+    Id: 0,
+    Ativo: true,
+    Nome: '',
+    Sobrenome: '',
+    NomeSocial: '',
+    DataNascimento: '',
+    Cpf: '',
+    Senha: ''
+  };
+
+  formulario!: FormGroup;
+  id?: number
+
+
+  constructor(
+    private usuarioService: UsuarioService,
+    private activeRoute: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private datePipe: DatePipe
+  ) { }
+
+  ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      Nome: ['', [Validators.required]],
+      Sobrenome: ['', [Validators.required]],
+      NomeSocial: [''],
+      DataNascimento: ['', [Validators.required]],
+      Cpf: ['', [Validators.required]],
+      Senha: ['', [Validators.required]]
+    });
+
+    this.id = +(this.activeRoute.snapshot.paramMap.get('id') || 0);
+    this.conteudo = this.buscaConteudoFormulario();
+  }
+
+  ehEdicao(): boolean {
+    return !!this.id;
+  }
+
+    carregaUsuario(): void {
+    this.usuarioService.obterUsuarioPorId(this.id!).subscribe((usuario) => {
+      this.usuario = usuario;
+      this.formulario.patchValue({
+        Nome: usuario.Nome,
+        Sobrenome: usuario.Sobrenome,
+        NomeSocial: usuario.NomeSocial,
+        DataNascimento: this.datePipe.transform(usuario.DataNascimento, 'yyyy-MM-dd'),
+        Cpf: usuario.Cpf,
+        Senha: usuario.Senha
+      });
+      console.log("Data da API", usuario.DataNascimento);
+    });
+  }
+
+  buscaConteudoFormulario(): IConteudoForm {
+    if (this.ehEdicao()) {
+      this.conteudo = FORM_CONFIG.EDITAR();
+      this.carregaUsuario();
+    } else {
+      this.conteudo = FORM_CONFIG.CADASTRAR();
+    }
+    return this.conteudo;
+  }
+
+  validaCampo(campo: string): boolean {
+    var campoFormulário = this.formulario.get(campo);
+    return campoFormulário?.errors?.['required'] && campoFormulário?.touched;
+  }
+
+  confirmar(){
+    if (this.ehEdicao()) {
+      this.editarUsuario();
+    } else {
+      this.cadastrarUsuario();
+    }
+  }
+
+  cadastrarUsuario(){
+    this.atribuiUsuario();
+    if (this.formulario.valid) {
+      this.usuarioService.criarUsuario(this.usuario).subscribe(() => {
+        this.router.navigate(['/']);
+        alert('Usuário cadastrado com sucesso!');
+      });
+    } else {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+    }
+  }
+
+  editarUsuario(){
+      this.atribuiUsuario();
+      if (this.formulario.valid && this.usuario.Id) {
+       this.usuarioService.atualizarUsuario(this.usuario.Id, this.usuario).subscribe(() => {
+        this.router.navigate(['/']);
+        alert('Usuário editado com sucesso!');
+      });
+    } else {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+    }
+  }
+
+  atribuiUsuario(): void {
+    if (this.ehEdicao() && this.id) {
+      this.usuario.Id = this.id;
+    }
+    this.usuario.Nome = this.formulario.get('Nome')?.value;
+    this.usuario.Sobrenome = this.formulario.get('Sobrenome')?.value;
+    this.usuario.NomeSocial = this.formulario.get('NomeSocial')?.value;
+    this.usuario.DataNascimento = this.formulario.get('DataNascimento')?.value;
+    this.usuario.Cpf = this.formulario.get('Cpf')?.value;
+    this.usuario.Senha = this.formulario.get('Senha')?.value;
+  }
+}

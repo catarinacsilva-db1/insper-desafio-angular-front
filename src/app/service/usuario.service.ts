@@ -11,11 +11,11 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  getListaUsuarios() {
+  obterListaUsuarios() {
     return this.http.get<IUsuario[]>(this.API);
   }
 
-  getUsuarioPorId(id: number) {
+  obterUsuarioPorId(id: number) {
     return this.http.get<IUsuario>(`${this.API}/${id}`);
   }
 

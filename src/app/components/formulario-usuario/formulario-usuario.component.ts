@@ -45,7 +45,8 @@ export class FormularioUsuarioComponent implements OnInit {
       NomeSocial: [''],
       DataNascimento: ['', [Validators.required]],
       Cpf: ['', [Validators.required]],
-      Senha: ['', [Validators.required]]
+      Senha: ['', [Validators.required]],
+      SenhaConfirmar: ['', [Validators.required]]
     });
 
     this.id = +(this.activeRoute.snapshot.paramMap.get('id') || 0);
@@ -67,7 +68,6 @@ export class FormularioUsuarioComponent implements OnInit {
         Cpf: usuario.Cpf,
         Senha: usuario.Senha
       });
-      console.log("Data da API", usuario.DataNascimento);
     });
   }
 

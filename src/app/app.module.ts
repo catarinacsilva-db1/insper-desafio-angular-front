@@ -12,6 +12,10 @@ import { FormularioUsuarioComponent } from './components/formulario-usuario/form
 import { IndexComponent } from './components/index/index.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { DatePipe } from '@angular/common';
+import { InputTextoComponent } from './components/formulario-usuario/input-texto/input-texto.component';
+import { InputDataComponent } from './components/formulario-usuario/input-data/input-data.component';
+import { InputCpfComponent } from './components/formulario-usuario/input-cpf/input-cpf.component';
+import { InputSenhaComponent } from './components/formulario-usuario/input-senha/input-senha.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { DatePipe } from '@angular/common';
     TabelaUsuarioComponent,
     ModalConfirmacaoUsuarioComponent,
     FormularioUsuarioComponent,
-    IndexComponent
+    IndexComponent,
+    InputTextoComponent,
+    InputDataComponent,
+    InputCpfComponent,
+    InputSenhaComponent
   ],
   imports: [
     BrowserModule,

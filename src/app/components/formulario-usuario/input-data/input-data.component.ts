@@ -16,10 +16,10 @@ export class InputDataComponent implements OnInit {
 
   @Input()
   campo ={
-    labelForCampo: '',
-    tituloCampo: '',
-    formControlNameCampo: '',
-    idCampo: ''
+    labelForCampoData: '',
+    tituloCampoData: '',
+    formControlNameCampoData: '',
+    idCampoData: ''
   }
 
   constructor() { }

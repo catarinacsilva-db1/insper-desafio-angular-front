@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FORM_CONFIG, IConteudoForm } from 'src/app/service/constantes/conteudoFormulario';
 import { IUsuario } from 'src/app/service/interfaces/IUsuario';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { validadorSenha } from './input-senha/validador/validador-senha';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -47,6 +48,9 @@ export class FormularioUsuarioComponent implements OnInit {
       Cpf: ['', [Validators.required]],
       Senha: ['', [Validators.required]],
       SenhaConfirmar: ['', [Validators.required]]
+    },
+    {
+      validators: validadorSenha('Senha', 'SenhaConfirmar')
     });
 
     this.id = +(this.activeRoute.snapshot.paramMap.get('id') || 0);

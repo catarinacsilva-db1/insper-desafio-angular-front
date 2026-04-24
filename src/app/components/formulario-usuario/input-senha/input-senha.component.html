@@ -1,0 +1,28 @@
+<div [formGroup]="formPai" class="row">
+  <div class="col-md-6 ab-3">
+    <label [for]="campo.labelForCampoSenha" class="form-label">{{campo.tituloCampoSenha}}</label>
+    <input type="password" class="form-control" [id]="campo.idCampoSenha" [formControlName]="campo.formControlNameCampoSenha">
+    <span *ngIf=" validaCampo " class="text-danger"
+    >{{campo.tituloCampoSenha}} é obrigatória.
+    </span>
+
+    <span class="form-text text-muted">
+        <p>A senha deve conter:</p>
+        <ul>
+          <li>no mínimo 8 caracteres,</li>
+          <li>Letras maiúsculas, minúsculas, números e caracteres especiais.</li>
+        </ul>
+    </span>
+  </div>
+
+  <div class="col-md-6 ab-3">
+    <label [for]="campo.labelForCampoSenha + 'Confirmar'" class="form-label">Confirmar {{campo.tituloCampoSenha}}</label>
+    <input type="password" class="form-control" [id]="campo.idCampoSenha + 'Confirmar'" [formControlName]="campo.formControlNameCampoSenha + 'Confirmar'">
+    <span *ngIf=" validaCampo " class="text-danger"
+    >Confirmar {{campo.tituloCampoSenha}} é obrigatória.
+    </span>
+    <span *ngIf="validaSenha()" class="text-danger"
+    >As senhas não coincidem.
+    </span>
+  </div>
+</div>

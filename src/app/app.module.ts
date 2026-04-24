@@ -16,6 +16,7 @@ import { InputTextoComponent } from './components/formulario-usuario/input-texto
 import { InputDataComponent } from './components/formulario-usuario/input-data/input-data.component';
 import { InputCpfComponent } from './components/formulario-usuario/input-cpf/input-cpf.component';
 import { InputSenhaComponent } from './components/formulario-usuario/input-senha/input-senha.component';
+import { RequisitoSenhaComponent } from './components/formulario-usuario/input-senha/requisito-senha/requisito-senha.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { InputSenhaComponent } from './components/formulario-usuario/input-senha
     InputTextoComponent,
     InputDataComponent,
     InputCpfComponent,
-    InputSenhaComponent
+    InputSenhaComponent,
+    RequisitoSenhaComponent
   ],
   imports: [
     BrowserModule,

@@ -18,10 +18,10 @@ export class InputCpfComponent implements OnInit {
 
   @Input()
   campo ={
-    labelForCampo: '',
-    tituloCampo: '',
-    formControlNameCampo: '',
-    idCampo: ''
+    labelForCampoCpf: '',
+    tituloCampoCpf: '',
+    formControlNameCampoCpf: '',
+    idCampoCpf: ''
   }
 
   constructor() { }

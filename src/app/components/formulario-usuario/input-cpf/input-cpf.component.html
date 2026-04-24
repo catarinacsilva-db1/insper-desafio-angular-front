@@ -1,12 +1,12 @@
 <div [formGroup]="formPai">
-  <label [for]="campo.labelForCampo" class="form-label">{{campo.tituloCampo}}</label>
+  <label [for]="campo.labelForCampoCpf" class="form-label">{{campo.tituloCampoCpf}}</label>
   <input type="text"
   class="form-control cpf"
-  [id]="campo.idCampo"
-  [formControlName]="campo.formControlNameCampo"
+  [id]="campo.idCampoCpf"
+  [formControlName]="campo.formControlNameCampoCpf"
   mask="000.000.000-00"
   [readonly]="validaEdicao">
   <span *ngIf=" validaCampo " class="text-danger"
-  >{{campo.tituloCampo}} é obrigatório.
+  >{{campo.tituloCampoCpf}} é obrigatório.
   </span>
 </div>

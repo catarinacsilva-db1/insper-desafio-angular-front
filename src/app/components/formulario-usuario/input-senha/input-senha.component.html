@@ -6,11 +6,32 @@
     >{{campo.tituloCampoSenha}} é obrigatória.
     </span>
 
-    <span class="form-text text-muted">
-        <p>A senha deve conter:</p>
+    <span class="form-text">
+      <p class="text-muted" >A senha deve conter:</p>
         <ul>
-          <li>no mínimo 8 caracteres,</li>
-          <li>Letras maiúsculas, minúsculas, números e caracteres especiais.</li>
+          <li [ngClass]="
+          {'bi bi-x text-danger' : campoSenhaErros('tamanhoInvalido') === true,
+          'bi bi-check text-success' : campoSenhaErros('tamanhoInvalido')=== false,
+          'text-muted': campoSenhaErros('tamanhoInvalido') === null}"
+          > Mínimo 6 caracteres </li>
+
+          <li [ngClass]="
+          {'bi bi-x text-danger' : campoSenhaErros('faltaMaiuscula') === true,
+          'bi bi-check text-success' : campoSenhaErros('faltaMaiuscula')=== false,
+          'text-muted': campoSenhaErros('faltaMaiuscula') === null}"
+          > Letra maiúscula </li>
+
+          <li [ngClass]="
+          {'bi bi-x text-danger' : campoSenhaErros('faltaMinuscula') === true,
+          'bi bi-check text-success' : campoSenhaErros('faltaMinuscula')=== false,
+          'text-muted': campoSenhaErros('faltaMinuscula') === null}"
+          > Letra minúscula </li>
+
+          <li [ngClass]="
+          {'bi bi-x text-danger' : campoSenhaErros('faltaNumero') === true,
+          'bi bi-check text-success' : campoSenhaErros('faltaNumero')=== false,
+          'text-muted': campoSenhaErros('faltaNumero') === null}"
+          > Números </li>
         </ul>
     </span>
   </div>
@@ -21,8 +42,9 @@
     <span *ngIf=" validaCampo " class="text-danger"
     >Confirmar {{campo.tituloCampoSenha}} é obrigatória.
     </span>
-    <span *ngIf="validaSenha()" class="text-danger"
+    <span *ngIf="validaConfirmaSenha()" class="text-danger"
     >As senhas não coincidem.
     </span>
   </div>
 </div>
+

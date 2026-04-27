@@ -25,11 +25,10 @@ export class InputSenhaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.formPai.valid);
 
   }
 
-  validaSenha(){
+  validaConfirmaSenha(){
     const campoConfirmarSenha = this.formPai.get(this.campo.formControlNameCampoSenha + 'Confirmar');
     if (campoConfirmarSenha && campoConfirmarSenha.touched) {
       const erroSenha = this.formPai.hasError('senhasDiferentes')
@@ -37,4 +36,10 @@ export class InputSenhaComponent implements OnInit {
     }
     return false;
   }
+
+  campoSenhaErros(erro: string): boolean | null {
+    const campoSenha = this.formPai.get(this.campo.formControlNameCampoSenha);
+    if (!campoSenha?.dirty) return null;
+    return !!campoSenha?.errors?.[erro];
+    }
 }

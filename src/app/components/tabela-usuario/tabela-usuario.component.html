@@ -12,16 +12,16 @@
             </thead>
             <tbody>
                     <tr *ngFor="let u of usuariosList">
-                        <td>{{u.Nome}}</td>
-                        <td>{{u.Sobrenome}}</td>
-                        <td>{{u.NomeSocial}}</td>
-                        <td class="text-center">{{u.DataNascimento | date:'dd/MM/yyyy'}}</td>
-                        <td class="cpf text-center" >{{u.Cpf | mask:'000.000.000-00'}}</td>
+                        <td>{{u.nome}}</td>
+                        <td>{{u.sobrenome}}</td>
+                        <td>{{u.nomeSocial}}</td>
+                        <td class="text-center">{{u.dataNascimento | date:'dd/MM/yyyy'}}</td>
+                        <td class="cpf text-center" >{{u.cpf | mask:'000.000.000-00'}}</td>
                          <td class="col-2 text-center">
-                          <button type="button" class="btn btn-default" (click)="abreModalStatus(u)" [title]="buscaTituloBotaoStatus(u.Ativo)" [attr.aria-label]="buscaTituloBotaoStatus(u.Ativo)">
-                            <i [ngClass]="u.Ativo ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-secondary'"></i>
+                          <button type="button" class="btn btn-default" (click)="abreModalStatus(u)" [title]="buscaTituloBotaoStatus(u.ativo)" [attr.aria-label]="buscaTituloBotaoStatus(u.ativo)">
+                            <i [ngClass]="u.ativo ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-secondary'"></i>
                           </button>
-                          <button type="button" class="btn btn-default" [routerLink]="['/editar', u.Id]" title="Editar Usuário">
+                          <button type="button" class="btn btn-default" [routerLink]="['/editar', u.id]" title="Editar Usuário">
                             <i class="bi bi-pencil"></i>
                           </button>
                           <button type="button" class="btn btn-default" (click)="abreModalExcluir(u)" title="Excluir Usuário">

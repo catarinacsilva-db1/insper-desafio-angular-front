@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUsuario } from './interfaces/IUsuario';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  private readonly API = "https://localhost:44380/Usuarios"
+  private readonly API = `${environment.apiUrl}/Usuarios`;
 
   constructor(private http: HttpClient) { }
 

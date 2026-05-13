@@ -17,14 +17,14 @@ export class FormularioUsuarioComponent implements OnInit {
   conteudo!: IConteudoForm;
 
   usuario: IUsuario = {
-    Id: 0,
-    Ativo: true,
-    Nome: '',
-    Sobrenome: '',
-    NomeSocial: '',
-    DataNascimento: '',
-    Cpf: '',
-    Senha: ''
+    id: 0,
+    ativo: true,
+    nome: '',
+    sobrenome: '',
+    nomeSocial: '',
+    dataNascimento: '',
+    cpf: '',
+    senha: ''
   };
 
   formulario!: FormGroup;
@@ -65,12 +65,12 @@ export class FormularioUsuarioComponent implements OnInit {
     this.usuarioService.obterUsuarioPorId(this.id!).subscribe((usuario) => {
       this.usuario = usuario;
       this.formulario.patchValue({
-        Nome: usuario.Nome,
-        Sobrenome: usuario.Sobrenome,
-        NomeSocial: usuario.NomeSocial,
-        DataNascimento: this.datePipe.transform(usuario.DataNascimento, 'yyyy-MM-dd'),
-        Cpf: usuario.Cpf,
-        Senha: usuario.Senha
+        Nome: usuario.nome,
+        Sobrenome: usuario.sobrenome,
+        NomeSocial: usuario.nomeSocial,
+        DataNascimento: this.datePipe.transform(usuario.dataNascimento, 'yyyy-MM-dd'),
+        Cpf: usuario.cpf,
+        Senha: usuario.senha
       });
     });
   }
@@ -112,8 +112,8 @@ export class FormularioUsuarioComponent implements OnInit {
 
   editarUsuario(){
       this.atribuiUsuario();
-      if (this.formulario.valid && this.usuario.Id) {
-       this.usuarioService.atualizarUsuario(this.usuario.Id, this.usuario).subscribe(() => {
+      if (this.formulario.valid && this.usuario.id) {
+       this.usuarioService.atualizarUsuario(this.usuario.id, this.usuario).subscribe(() => {
         this.router.navigate(['/']);
         alert('Usuário editado com sucesso!');
       });
@@ -124,14 +124,14 @@ export class FormularioUsuarioComponent implements OnInit {
 
   atribuiUsuario(): void {
     if (this.ehEdicao() && this.id) {
-      this.usuario.Id = this.id;
+      this.usuario.id = this.id;
     }
-    this.usuario.Nome = this.formulario.get('Nome')?.value;
-    this.usuario.Sobrenome = this.formulario.get('Sobrenome')?.value;
-    this.usuario.NomeSocial = this.formulario.get('NomeSocial')?.value;
-    this.usuario.DataNascimento = this.formulario.get('DataNascimento')?.value;
-    this.usuario.Cpf = this.formulario.get('Cpf')?.value;
-    this.usuario.Senha = this.formulario.get('Senha')?.value;
+    this.usuario.nome = this.formulario.get('Nome')?.value;
+    this.usuario.sobrenome = this.formulario.get('Sobrenome')?.value;
+    this.usuario.nomeSocial = this.formulario.get('NomeSocial')?.value;
+    this.usuario.dataNascimento = this.formulario.get('DataNascimento')?.value;
+    this.usuario.cpf = this.formulario.get('Cpf')?.value;
+    this.usuario.senha = this.formulario.get('Senha')?.value;
   }
 
 }

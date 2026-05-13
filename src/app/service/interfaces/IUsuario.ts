@@ -1,10 +1,10 @@
 export interface IUsuario {
-  Id?: number;
-  Ativo: boolean;
-  Nome: string;
-  Sobrenome: string;
-  NomeSocial?: string | null;
-  DataNascimento: string;
-  Cpf: string;
-  Senha: string;
+  id?: number;
+  ativo: boolean;
+  nome: string;
+  sobrenome: string;
+  nomeSocial?: string | null;
+  dataNascimento: string;
+  cpf: string;
+  senha: string;
 }

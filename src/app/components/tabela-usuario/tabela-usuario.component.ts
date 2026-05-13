@@ -29,6 +29,7 @@ export class TabelaUsuarioComponent implements OnInit {
 
   listarUsuarios(){
         this.usuarioService.obterListaUsuarios().subscribe((usuarios) => {
+        console.log(usuarios);
         this.usuariosList = usuarios;
       });
   }
@@ -69,10 +70,10 @@ export class TabelaUsuarioComponent implements OnInit {
 
   private atribuiUsuarioModal(usuario: IUsuario) {
       this.usuarioModal = {
-      Id: usuario.Id,
-      Ativo: usuario.Ativo,
-      Nome: usuario.Nome,
-      Sobrenome: usuario.Sobrenome
+      Id: usuario.id,
+      Ativo: usuario.ativo,
+      Nome: usuario.nome,
+      Sobrenome: usuario.sobrenome
     };
   }
 }

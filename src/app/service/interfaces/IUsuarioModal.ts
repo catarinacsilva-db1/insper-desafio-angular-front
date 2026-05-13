@@ -1,5 +1,5 @@
 export interface IUsuarioModal {
-  Id: number;
+  Id?: number;
   Ativo: boolean;
   Nome: string;
   Sobrenome: string;}

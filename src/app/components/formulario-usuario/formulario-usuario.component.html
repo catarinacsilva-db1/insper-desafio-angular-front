@@ -1,0 +1,89 @@
+<div class="container body-content">
+  <header>
+    <h1>{{ conteudo.titulo }}</h1>
+  </header>
+<hr>
+  <form [formGroup]="formulario">
+    <div class="row">
+      <app-input-texto class="col-md-6 ab-3"
+        [formPai]='formulario'
+        [campo]="{
+          labelForCampoTexto: 'nomeUsuario',
+          tituloCampoTexto: 'Nome',
+          formControlNameCampoTexto: 'Nome',
+          idCampoTexto: 'nomeUsuario'
+        }"
+        [validaCampo]="validaCampo('Nome')">
+        </app-input-texto>
+
+        <app-input-texto class="col-md-6 ab-3"
+        [formPai]='formulario'
+        [campo]="{
+          labelForCampoTexto: 'sobrenomeUsuario',
+          tituloCampoTexto: 'Sobrenome',
+          formControlNameCampoTexto: 'Sobrenome',
+          idCampoTexto: 'sobrenomeUsuario'
+        }"
+        [validaCampo]="validaCampo('Sobrenome')">
+        </app-input-texto>
+    </div>
+    <div class="row">
+
+      <app-input-texto class="col-md-6 ab-3"
+        [formPai]='formulario'
+        [campo]="{
+          labelForCampoTexto: 'nomeSocialUsuario',
+          tituloCampoTexto: 'Nome Social',
+          formControlNameCampoTexto: 'NomeSocial',
+          idCampoTexto: 'nomeSocialUsuario'
+        }"
+        [validaCampo]="false">
+        </app-input-texto>
+
+        <app-input-data class="col-md-6 ab-3"
+        [formPai]='formulario'
+        [campo]="{
+          labelForCampoData: 'dataNascimentoUsuario',
+          tituloCampoData: 'Data de Nascimento',
+          formControlNameCampoData: 'DataNascimento',
+          idCampoData: 'dataNascimentoUsuario'
+        }"
+        [validaCampo]="validaCampo('DataNascimento')">
+        </app-input-data>
+
+        <app-input-cpf class="col-md-6 ab-3"
+        [formPai]='formulario'
+        [campo]="{
+          labelForCampoCpf: 'cpfUsuario',
+          tituloCampoCpf: 'CPF',
+          formControlNameCampoCpf: 'Cpf',
+          idCampoCpf: 'cpfUsuario'
+        }"
+        [validaCampo]="validaCampo('Cpf')"
+        [validaEdicao]="ehEdicao()">
+        </app-input-cpf>
+    </div>
+
+    <div>
+        <app-input-senha
+        [formPai]='formulario'
+        [campo]="{
+          labelForCampoSenha: 'senhaUsuario',
+          tituloCampoSenha: 'Senha',
+          formControlNameCampoSenha: 'Senha',
+          idCampoSenha: 'senhaUsuario'
+        }"
+        [validaCampo]="validaCampo('Senha')">
+        </app-input-senha>
+    </div>
+
+    <section class="m-3">
+        <button type="submit"
+        class="btn btn-primary"
+        [disabled]="!formulario.valid"
+        (click)="confirmar()">{{conteudo.textoBotaoConfirmar}}</button>
+        <a class="btn btn-default" [routerLink]="['/index']">Voltar</a>
+    </section>
+  </form>
+</div>
+

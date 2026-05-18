@@ -1,0 +1,18 @@
+<form [formGroup]="form" class="d-flex justify-content-start gap-4 mb-4">
+  <div class="input-group" style="max-width: 250px;">
+      <label class="input-group-text">Filtrar por:</label>
+      <select formControlName="filtro" class="form-select" id="filtro">
+          <option *ngFor="let option of Options" [value]="option.value">
+              {{ option.label }}
+          </option>
+      </select>
+  </div>
+  <div class="input-group">
+    <input type="search" formControlName="termoPesquisa" class="form-control rounded" autofocus placeholder="Pesquisar Usuário...." aria-label="Pesquisar Usuário"
+    />
+    <button type="button" (click)="onBuscar()" class="btn btn-outline-primary">
+        <i class="bi bi-search"></i>
+    </button>
+  </div>
+  <span type="button" (click)="limpar()"> Limpar </span>
+</form>

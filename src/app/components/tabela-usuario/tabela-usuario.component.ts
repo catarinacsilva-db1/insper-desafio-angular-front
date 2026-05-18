@@ -29,7 +29,6 @@ export class TabelaUsuarioComponent implements OnInit {
 
   listarUsuarios(){
         this.usuarioService.obterListaUsuarios().subscribe((usuarios) => {
-        console.log(usuarios);
         this.usuariosList = usuarios;
       });
   }
@@ -66,6 +65,13 @@ export class TabelaUsuarioComponent implements OnInit {
          });
     }
     this.modalExcluir.fechar();
+  }
+
+  pesquisarUsuarios($event: { filtro: string, termoPesquisa: string }){
+    console.log("dados:" + $event.filtro + " && " + $event.termoPesquisa);
+    this.usuarioService.obterListaUsuarios($event.filtro, $event.termoPesquisa).subscribe((usuarios) => {
+        this.usuariosList = usuarios;
+      });
   }
 
   private atribuiUsuarioModal(usuario: IUsuario) {

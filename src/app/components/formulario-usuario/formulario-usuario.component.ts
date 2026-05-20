@@ -1,10 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FORM_CONFIG, IConteudoForm } from 'src/app/service/constantes/conteudoFormulario';
 import { IUsuario } from 'src/app/service/interfaces/IUsuario';
-import { UsuarioService } from 'src/app/service/usuario.service';
+import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 import { validadorConfirmarSenha, validadorRequisitosSenha } from '../validador/validador-senha';
 
 @Component({
@@ -32,11 +33,12 @@ export class FormularioUsuarioComponent implements OnInit {
 
 
   constructor(
-    private usuarioService: UsuarioService,
-    private activeRoute: ActivatedRoute,
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private datePipe: DatePipe
+    private readonly usuarioService: UsuarioService,
+    private readonly activeRoute: ActivatedRoute,
+    private readonly router: Router,
+    private readonly formBuilder: FormBuilder,//analisar esses translate instant
+    private readonly datePipe: DatePipe,
+    private readonly translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -86,8 +88,8 @@ export class FormularioUsuarioComponent implements OnInit {
   }
 
   validaCampo(campo: string): boolean {
-    var campoFormulário = this.formulario.get(campo);
-    return campoFormulário?.errors?.['required'] && campoFormulário?.touched;
+    const campoFormulario = this.formulario.get(campo);
+    return campoFormulario?.errors?.['required'] && campoFormulario?.touched;
   }
 
   confirmar(){
@@ -103,7 +105,7 @@ export class FormularioUsuarioComponent implements OnInit {
     if (this.formulario.valid) {
       this.usuarioService.criarUsuario(this.usuario).subscribe(() => {
         this.router.navigate(['/']);
-        alert('Usuário cadastrado com sucesso!');
+        alert(this.translate.instant('MENSAGENS.USUARIO_CADASTRADO_SUCESSO'));
       });
     } else {
       alert('Por favor, preencha todos os campos obrigatórios.');
@@ -115,10 +117,10 @@ export class FormularioUsuarioComponent implements OnInit {
       if (this.formulario.valid && this.usuario.id) {
        this.usuarioService.atualizarUsuario(this.usuario.id, this.usuario).subscribe(() => {
         this.router.navigate(['/']);
-        alert('Usuário editado com sucesso!');
+        alert(this.translate.instant('MENSAGENS.USUARIO_EDITADO_SUCESSO'));
       });
     } else {
-      alert('Por favor, preencha todos os campos obrigatórios.');
+      alert(this.translate.instant('MENSAGENS.PREENCHA_CAMPOS_OBRIGATORIOS'));
     }
   }
 

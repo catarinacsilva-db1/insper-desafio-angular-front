@@ -1,0 +1,87 @@
+{
+  "INDEX": {
+    "TITULO": "User Listing"
+  },
+  "BOTAO": {
+    "EDITAR": "Edit",
+    "EXCLUIR": "Delete",
+    "ATIVAR": "Activate",
+    "INATIVAR": "Deactivate",
+    "VOLTAR": "Back",
+    "CADASTRAR": "Register",
+    "CANCELAR": "Cancel",
+    "CONFIRMAR": "Confirm",
+    "ALTERAR": "Update"
+  },
+  "FILTRO_PESQUISA": {
+    "BARRA_PLACEHOLDER": "Search user...",
+    "FILTRO_PLACEHOLDER": "Filter by:",
+    "LIMPAR": "Clear",
+    "OPCOES_STATUS": {
+      "TODOS": "All",
+      "ATIVO": "Active",
+      "INATIVO": "Inactive"
+    }
+  },
+  "FORMULARIO": {
+    "TITULO_EDITAR": "Edit User",
+    "TITULO_CADASTRAR": "User Registration",
+    "CAMPOS": {
+      "NOME": "Name",
+      "SOBRENOME": "Last Name",
+      "NOME_SOCIAL": "Social Name",
+      "DATA_NASCIMENTO": "Date of Birth",
+      "CPF": "CPF",
+      "SENHA": "Password",
+      "CONFIRMAR_SENHA": "Confirm Password"
+    },
+    "VALIDACAO": {
+      "OBRIGATORIO": "{{campo}} is required.",
+      "OBRIGATORIA": "{{campo}} is required.",
+      "SENHAS_NAO_COINCIDEM": "Passwords do not match."
+    },
+    "SENHA_REQUISITOS": {
+      "TITULO": "Password must contain:",
+      "MIN_CARACTERES": "Minimum 6 characters",
+      "MAIUSCULA": "Uppercase letter",
+      "MINUSCULA": "Lowercase letter",
+      "NUMERO": "Number"
+    }
+  },
+  "TABELA": {
+    "COLUNAS": {
+      "NOME": "Name",
+      "SOBRENOME": "Last Name",
+      "NOME_SOCIAL": "Social Name",
+      "DATA_NASCIMENTO": "Date of Birth",
+      "CPF": "CPF",
+      "OPCOES": "Options"
+    },
+    "ACAO_USUARIO": {
+      "EDITAR": "Edit User",
+      "EXCLUIR": "Delete User",
+      "ATIVAR": "Activate User",
+      "INATIVAR": "Deactivate User"
+    },
+    "SEM_USUARIOS": "No users registered."
+  },
+  "MODAL": {
+    "ALTERACAO_STATUS": {
+      "TITULO": "Change Status",
+      "CORPO": "Do you want to change the status of user {{nome}} {{sobrenome}} to {{statusTexto}}?"
+    },
+    "EXCLUIR": {
+      "TITULO": "Delete Confirmation",
+      "CORPO": "Do you want to delete user {{nome}} {{sobrenome}}?"
+    }
+  },
+  "STATUS": {
+    "ATIVO": "Active",
+    "INATIVO": "Inactive"
+  },
+  "MENSAGENS": {
+    "USUARIO_CADASTRADO_SUCESSO": "User successfully registered!",
+    "USUARIO_EDITADO_SUCESSO": "User successfully updated!",
+    "PREENCHA_CAMPOS_OBRIGATORIOS": "Please fill in all required fields."
+  }
+}

@@ -1,18 +1,19 @@
 <form [formGroup]="form" class="d-flex justify-content-start gap-4 mb-4">
-  <div class="input-group" style="max-width: 250px;">
-      <label class="input-group-text">Filtrar por:</label>
+    <div class="input-group" style="max-width: 250px;">
+      <label class="input-group-text">{{ 'FILTRO_PESQUISA.FILTRO_PLACEHOLDER' | translate }}</label>
       <select formControlName="filtro" class="form-select" id="filtro">
-          <option *ngFor="let option of Options" [value]="option.value">
-              {{ option.label }}
-          </option>
+        <option *ngFor="let option of Options" [value]="option.value">
+          {{ option.label | translate }}
+        </option>
       </select>
-  </div>
+    </div>
   <div class="input-group">
-    <input type="search" formControlName="termoPesquisa" class="form-control rounded" autofocus placeholder="Pesquisar Usuário...." aria-label="Pesquisar Usuário"
-    />
+    <input type="search" formControlName="termoPesquisa" class="form-control rounded" autofocus [placeholder]="'FILTRO_PESQUISA.BARRA_PLACEHOLDER' | translate" [attr.aria-label]="'FILTRO_PESQUISA.BARRA_PLACEHOLDER' | translate"/>
     <button type="button" (click)="onBuscar()" class="btn btn-outline-primary">
         <i class="bi bi-search"></i>
     </button>
   </div>
-  <span type="button" (click)="limpar()"> Limpar </span>
+  <button type="button" class="btn btn-link" (click)="limpar()" title="{{ 'FILTRO_PESQUISA.LIMPAR' | translate }}">
+     <i class="bi bi-x-circle"></i>
+  </button>
 </form>

@@ -1,7 +1,7 @@
 <div [formGroup]="formPai">
-  <label [for]="campo.labelForCampoTexto" class="form-label">{{campo.tituloCampoTexto}}</label>
+  <label [for]="campo.labelForCampoTexto" class="form-label">{{ campo.tituloCampoTexto | translate }}</label>
   <input type="text" class="form-control" [id]="campo.idCampoTexto" [formControlName]="campo.formControlNameCampoTexto">
-  <span *ngIf="validaCampo" class="text-danger"
-  >{{campo.tituloCampoTexto}} é obrigatório.
+  <span *ngIf="validaCampo" class="text-danger">
+    {{ 'FORMULARIO.VALIDACAO.OBRIGATORIO' | translate:{campo: (campo.tituloCampoTexto | translate)} }}
   </span>
 </div>

@@ -12,9 +12,9 @@ export class FiltroBarraPesquisaComponent implements OnInit {
   @Output() limparBusca = new EventEmitter<void>();
 
   Options= [
-    { value: 'todos', label: 'Todos' },
-    { value: 'ativo', label: 'Ativos' },
-    { value: 'inativo', label: 'Inativos' }
+    { value: 'todos', label: 'FILTRO_PESQUISA.OPCOES_STATUS.TODOS' },
+    { value: 'ativo', label: 'FILTRO_PESQUISA.OPCOES_STATUS.ATIVO' },
+    { value: 'inativo', label: 'FILTRO_PESQUISA.OPCOES_STATUS.INATIVO' }
   ];
 
   form!: FormGroup;

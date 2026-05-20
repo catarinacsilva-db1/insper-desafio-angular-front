@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IConteudoModal, MODAL_CONFIG } from 'src/app/service/constantes/conteudoModal';
+import { TranslateService } from '@ngx-translate/core';
 import { IUsuario } from 'src/app/service/interfaces/IUsuario';
 import { IUsuarioModal } from 'src/app/service/interfaces/IUsuarioModal';
-import { UsuarioService } from '../../service/usuario.service';
+import { UsuarioService } from '../../service/usuario/usuario.service';
 import { ModalConfirmacaoUsuarioComponent } from './modal-confirmacao-usuario/modal-confirmacao-usuario.component';
 
 
@@ -21,7 +22,8 @@ export class TabelaUsuarioComponent implements OnInit {
     usuarioModal!: IUsuarioModal;
 
     constructor(
-      private usuarioService: UsuarioService) { }
+      private usuarioService: UsuarioService,
+      private translate: TranslateService) { }
 
     ngOnInit(): void {
       this.listarUsuarios();
@@ -34,12 +36,13 @@ export class TabelaUsuarioComponent implements OnInit {
   }
 
   buscaTituloBotaoStatus(status: boolean): string {
-    return status ? 'Inativar Usuário' : 'Ativar Usuário';
+    return status ? 'TABELA.ACAO_USUARIO.INATIVAR' : 'TABELA.ACAO_USUARIO.ATIVAR';
   }
 
   abreModalStatus(usuario: IUsuario){
     this.atribuiUsuarioModal(usuario);
-    this.conteudoModal = MODAL_CONFIG.STATUS(this.usuarioModal.Nome, this.usuarioModal.Sobrenome, this.usuarioModal.Ativo);
+    const statusTexto = this.translate.instant(this.usuarioModal.Ativo ? 'STATUS.INATIVO' : 'STATUS.ATIVO');
+    this.conteudoModal = MODAL_CONFIG.STATUS(this.usuarioModal.Nome, this.usuarioModal.Sobrenome, statusTexto);
     setTimeout(() => this.modalStatus.abrir(), 0);
   }
 

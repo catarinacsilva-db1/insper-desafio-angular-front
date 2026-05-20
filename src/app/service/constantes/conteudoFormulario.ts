@@ -5,11 +5,11 @@ export interface IConteudoForm {
 
 export const FORM_CONFIG = {
   EDITAR: (): IConteudoForm => ({
-    titulo: 'Editar Usuário',
-    textoBotaoConfirmar: 'Editar'
+    titulo: 'FORMULARIO.TITULO_EDITAR',
+    textoBotaoConfirmar: 'BOTAO.EDITAR'
   }),
   CADASTRAR: (): IConteudoForm => ({
-    titulo: 'Cadastro de Usuário',
-    textoBotaoConfirmar: 'Cadastrar'
+    titulo: 'FORMULARIO.TITULO_CADASTRAR',
+    textoBotaoConfirmar: 'BOTAO.CADASTRAR'
   })
 };

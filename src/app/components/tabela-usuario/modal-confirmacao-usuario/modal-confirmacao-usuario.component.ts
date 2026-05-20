@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
 import Modal from 'bootstrap/js/dist/modal';
 import { IConteudoModal } from 'src/app/service/constantes/conteudoModal';
-import { UsuarioService } from '../../../service/usuario.service';
+import { UsuarioService } from '../../../service/usuario/usuario.service';
 
 
 @Component({

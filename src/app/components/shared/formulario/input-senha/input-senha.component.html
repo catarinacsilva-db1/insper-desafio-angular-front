@@ -1,49 +1,49 @@
 <div [formGroup]="formPai" class="row">
   <div class="col-md-6 ab-3">
-    <label [for]="campo.labelForCampoSenha" class="form-label">{{campo.tituloCampoSenha}}</label>
+    <label [for]="campo.labelForCampoSenha" class="form-label">{{ campo.tituloCampoSenha | translate }}</label>
     <input type="password" class="form-control" [id]="campo.idCampoSenha" [formControlName]="campo.formControlNameCampoSenha">
-    <span *ngIf=" validaCampo " class="text-danger"
-    >{{campo.tituloCampoSenha}} é obrigatória.
+    <span *ngIf=" validaCampo " class="text-danger">
+      {{ 'FORMULARIO.VALIDACAO.OBRIGATORIA' | translate:{campo: (campo.tituloCampoSenha | translate)} }}
     </span>
 
     <span class="form-text">
-      <p class="text-muted" >A senha deve conter:</p>
+      <p class="text-muted">{{ 'FORMULARIO.SENHA_REQUISITOS.TITULO' | translate }}</p>
         <ul>
           <li [ngClass]="
           {'bi bi-x text-danger' : campoSenhaErros('tamanhoInvalido') === true,
           'bi bi-check text-success' : campoSenhaErros('tamanhoInvalido')=== false,
           'text-muted': campoSenhaErros('tamanhoInvalido') === null}"
-          > Mínimo 6 caracteres </li>
+          > {{ 'FORMULARIO.SENHA_REQUISITOS.MIN_CARACTERES' | translate }} </li>
 
           <li [ngClass]="
           {'bi bi-x text-danger' : campoSenhaErros('faltaMaiuscula') === true,
           'bi bi-check text-success' : campoSenhaErros('faltaMaiuscula')=== false,
           'text-muted': campoSenhaErros('faltaMaiuscula') === null}"
-          > Letra maiúscula </li>
+          > {{ 'FORMULARIO.SENHA_REQUISITOS.MAIUSCULA' | translate }} </li>
 
           <li [ngClass]="
           {'bi bi-x text-danger' : campoSenhaErros('faltaMinuscula') === true,
           'bi bi-check text-success' : campoSenhaErros('faltaMinuscula')=== false,
           'text-muted': campoSenhaErros('faltaMinuscula') === null}"
-          > Letra minúscula </li>
+          > {{ 'FORMULARIO.SENHA_REQUISITOS.MINUSCULA' | translate }} </li>
 
           <li [ngClass]="
           {'bi bi-x text-danger' : campoSenhaErros('faltaNumero') === true,
           'bi bi-check text-success' : campoSenhaErros('faltaNumero')=== false,
           'text-muted': campoSenhaErros('faltaNumero') === null}"
-          > Números </li>
+          > {{ 'FORMULARIO.SENHA_REQUISITOS.NUMERO' | translate }} </li>
         </ul>
     </span>
   </div>
 
   <div class="col-md-6 ab-3">
-    <label [for]="campo.labelForCampoSenha + 'Confirmar'" class="form-label">Confirmar {{campo.tituloCampoSenha}}</label>
+    <label [for]="campo.labelForCampoSenha + 'Confirmar'" class="form-label">{{ 'FORMULARIO.CAMPOS.CONFIRMAR_SENHA' | translate }}</label>
     <input type="password" class="form-control" [id]="campo.idCampoSenha + 'Confirmar'" [formControlName]="campo.formControlNameCampoSenha + 'Confirmar'">
-    <span *ngIf=" validaCampo " class="text-danger"
-    >Confirmar {{campo.tituloCampoSenha}} é obrigatória.
+    <span *ngIf=" validaCampo " class="text-danger">
+      {{ 'FORMULARIO.VALIDACAO.OBRIGATORIA' | translate:{campo: ('FORMULARIO.CAMPOS.CONFIRMAR_SENHA' | translate)} }}
     </span>
-    <span *ngIf="validaConfirmaSenha()" class="text-danger"
-    >As senhas não coincidem.
+    <span *ngIf="validaConfirmaSenha()" class="text-danger">
+      {{ 'FORMULARIO.VALIDACAO.SENHAS_NAO_COINCIDEM' | translate }}
     </span>
   </div>
 </div>

@@ -1,0 +1,87 @@
+{
+  "INDEX": {
+    "TITULO": "Listagem de Usuários"
+  },
+  "BOTAO": {
+    "EDITAR": "Editar",
+    "EXCLUIR": "Excluir",
+    "ATIVAR": "Ativar",
+    "INATIVAR": "Inativar",
+    "VOLTAR": "Voltar",
+    "CADASTRAR": "Cadastrar",
+    "CANCELAR": "Cancelar",
+    "CONFIRMAR": "Confirmar",
+    "ALTERAR": "Alterar"
+  },
+  "FILTRO_PESQUISA": {
+    "BARRA_PLACEHOLDER": "Pesquisar Usuário....",
+    "FILTRO_PLACEHOLDER": "Filtrar por:",
+    "LIMPAR": "Limpar",
+    "OPCOES_STATUS": {
+      "TODOS": "Todos",
+      "ATIVO": "Ativos",
+      "INATIVO": "Inativos"
+    }
+  },
+  "FORMULARIO": {
+    "TITULO_EDITAR": "Editar Usuário",
+    "TITULO_CADASTRAR": "Cadastro de Usuário",
+    "CAMPOS": {
+      "NOME": "Nome",
+      "SOBRENOME": "Sobrenome",
+      "NOME_SOCIAL": "Nome Social",
+      "DATA_NASCIMENTO": "Data de Nascimento",
+      "CPF": "CPF",
+      "SENHA": "Senha",
+      "CONFIRMAR_SENHA": "Confirmar Senha"
+    },
+    "VALIDACAO": {
+      "OBRIGATORIO": "{{campo}} é obrigatório.",
+      "OBRIGATORIA": "{{campo}} é obrigatória.",
+      "SENHAS_NAO_COINCIDEM": "As senhas não coincidem."
+    },
+    "SENHA_REQUISITOS": {
+      "TITULO": "A senha deve conter:",
+      "MIN_CARACTERES": "Mínimo 6 caracteres",
+      "MAIUSCULA": "Letra maiúscula",
+      "MINUSCULA": "Letra minúscula",
+      "NUMERO": "Números"
+    }
+  },
+  "TABELA": {
+    "COLUNAS": {
+      "NOME": "Nome",
+      "SOBRENOME": "Sobrenome",
+      "NOME_SOCIAL": "Nome Social",
+      "DATA_NASCIMENTO": "Data de Nascimento",
+      "CPF": "CPF",
+      "OPCOES": "Opções"
+    },
+    "ACAO_USUARIO": {
+      "EDITAR": "Editar Usuário",
+      "EXCLUIR": "Excluir Usuário",
+      "ATIVAR": "Ativar Usuário",
+      "INATIVAR": "Inativar Usuário"
+    },
+    "SEM_USUARIOS": "Não há usuários cadastrados."
+  },
+  "MODAL": {
+    "ALTERACAO_STATUS": {
+      "TITULO": "Alteração de Status",
+      "CORPO": "Deseja alterar o status do usuário <strong>{{nome}} {{sobrenome}}</strong> para <strong>{{statusTexto}}</strong>?"
+    },
+    "EXCLUIR": {
+      "TITULO": "Confirmação de Exclusão",
+      "CORPO": "Deseja excluir o usuário <strong>{{nome}} {{sobrenome}}</strong>?"
+    }
+  },
+  "MENSAGENS": {
+    "USUARIO_CADASTRADO_SUCESSO": "Usuário cadastrado com sucesso!",
+    "USUARIO_EDITADO_SUCESSO": "Usuário editado com sucesso!",
+    "PREENCHA_CAMPOS_OBRIGATORIOS": "Por favor, preencha todos os campos obrigatórios."
+  }
+  ,"STATUS": {
+    "ATIVO": "Ativo",
+    "INATIVO": "Inativo"
+  }
+}

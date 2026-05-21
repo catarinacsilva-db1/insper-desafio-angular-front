@@ -16,7 +16,7 @@
   "FILTRO_PESQUISA": {
     "BARRA_PLACEHOLDER": "Pesquisar Usuário....",
     "FILTRO_PLACEHOLDER": "Filtrar por:",
-    "LIMPAR": "Limpar",
+    "LIMPAR": "Limpar Filtros",
     "OPCOES_STATUS": {
       "TODOS": "Todos",
       "ATIVO": "Ativos",

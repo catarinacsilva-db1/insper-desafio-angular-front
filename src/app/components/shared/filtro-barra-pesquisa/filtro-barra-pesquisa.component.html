@@ -9,11 +9,11 @@
     </div>
   <div class="input-group">
     <input type="search" formControlName="termoPesquisa" class="form-control rounded" autofocus [placeholder]="'FILTRO_PESQUISA.BARRA_PLACEHOLDER' | translate" [attr.aria-label]="'FILTRO_PESQUISA.BARRA_PLACEHOLDER' | translate"/>
-    <button type="button" (click)="onBuscar()" class="btn btn-outline-primary">
-        <i class="bi bi-search"></i>
+    <button type="button" (click)="onBuscar()" class="btn btn-outline-primary" [attr.aria-label]="'FILTRO_PESQUISA.BUSCAR' | translate">
+        <i class="bi bi-search" aria-hidden="true"></i>
     </button>
   </div>
-  <button type="button" class="btn btn-link" (click)="limpar()" title="{{ 'FILTRO_PESQUISA.LIMPAR' | translate }}">
-     <i class="bi bi-x-circle"></i>
+  <button type="button" class="btn btn-link" (click)="limpar()" title="{{ 'FILTRO_PESQUISA.LIMPAR' | translate }}" [attr.aria-label]="'FILTRO_PESQUISA.LIMPAR' | translate">
+     <i class="bi bi-x-circle" aria-hidden="true"></i>
   </button>
 </form>

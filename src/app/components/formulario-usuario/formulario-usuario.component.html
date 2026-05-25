@@ -1,6 +1,6 @@
 <div class="container body-content">
   <header>
-    <h1>{{ conteudo.titulo }}</h1>
+    <h1>{{ conteudo.titulo | translate }}</h1>
   </header>
 <hr>
   <form [formGroup]="formulario">
@@ -9,7 +9,7 @@
         [formPai]='formulario'
         [campo]="{
           labelForCampoTexto: 'nomeUsuario',
-          tituloCampoTexto: 'Nome',
+          tituloCampoTexto: 'FORMULARIO.CAMPOS.NOME',
           formControlNameCampoTexto: 'Nome',
           idCampoTexto: 'nomeUsuario'
         }"
@@ -20,7 +20,7 @@
         [formPai]='formulario'
         [campo]="{
           labelForCampoTexto: 'sobrenomeUsuario',
-          tituloCampoTexto: 'Sobrenome',
+          tituloCampoTexto: 'FORMULARIO.CAMPOS.SOBRENOME',
           formControlNameCampoTexto: 'Sobrenome',
           idCampoTexto: 'sobrenomeUsuario'
         }"
@@ -33,7 +33,7 @@
         [formPai]='formulario'
         [campo]="{
           labelForCampoTexto: 'nomeSocialUsuario',
-          tituloCampoTexto: 'Nome Social',
+          tituloCampoTexto: 'FORMULARIO.CAMPOS.NOME_SOCIAL',
           formControlNameCampoTexto: 'NomeSocial',
           idCampoTexto: 'nomeSocialUsuario'
         }"
@@ -44,7 +44,7 @@
         [formPai]='formulario'
         [campo]="{
           labelForCampoData: 'dataNascimentoUsuario',
-          tituloCampoData: 'Data de Nascimento',
+          tituloCampoData: 'FORMULARIO.CAMPOS.DATA_NASCIMENTO',
           formControlNameCampoData: 'DataNascimento',
           idCampoData: 'dataNascimentoUsuario'
         }"
@@ -55,7 +55,7 @@
         [formPai]='formulario'
         [campo]="{
           labelForCampoCpf: 'cpfUsuario',
-          tituloCampoCpf: 'CPF',
+          tituloCampoCpf: 'FORMULARIO.CAMPOS.CPF',
           formControlNameCampoCpf: 'Cpf',
           idCampoCpf: 'cpfUsuario'
         }"
@@ -69,7 +69,7 @@
         [formPai]='formulario'
         [campo]="{
           labelForCampoSenha: 'senhaUsuario',
-          tituloCampoSenha: 'Senha',
+          tituloCampoSenha: 'FORMULARIO.CAMPOS.SENHA',
           formControlNameCampoSenha: 'Senha',
           idCampoSenha: 'senhaUsuario'
         }"
@@ -81,8 +81,8 @@
         <button type="submit"
         class="btn btn-primary"
         [disabled]="!formulario.valid"
-        (click)="confirmar()">{{conteudo.textoBotaoConfirmar}}</button>
-        <a class="btn btn-default" [routerLink]="['/index']">Voltar</a>
+        (click)="confirmar()">{{conteudo.textoBotaoConfirmar | translate}}</button>
+        <a class="btn btn-default" [routerLink]="['/index']">{{ 'BOTAO.VOLTAR' | translate }}</a>
     </section>
   </form>
 </div>

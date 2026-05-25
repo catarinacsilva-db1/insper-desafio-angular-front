@@ -1,0 +1,7 @@
+        <div [formGroup]="formPai">
+          <label [for]="campo.labelForCampoData" class="form-label">{{ campo.tituloCampoData | translate }}</label>
+          <input type="date" class="form-control" [id]="campo.idCampoData" [formControlName]="campo.formControlNameCampoData">
+          <span *ngIf="validaCampo" class="text-danger">
+            {{ 'FORMULARIO.VALIDACAO.OBRIGATORIO' | translate:{campo: (campo.tituloCampoData | translate)} }}
+          </span>
+        </div>

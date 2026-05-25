@@ -1,13 +1,18 @@
+    <app-filtro-barra-pesquisa
+      (buscar)="pesquisarUsuarios($event)"
+      (limparBusca)="listarUsuarios()">
+    </app-filtro-barra-pesquisa>
+
     <div *ngIf="usuariosList.length > 0; else semUsuarios">
         <table class="table table-striped table-bordered">
             <thead>
                 <tr class="text-center">
-                    <th scope="col">Nome</th>
-                    <th scope="col">Sobrenome</th>
-                    <th scope="col">Nome Social</th>
-                    <th scope="col">Data de Nascimento</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">Opções</th>
+                  <th scope="col">{{ 'TABELA.COLUNAS.NOME' | translate }}</th>
+                  <th scope="col">{{ 'TABELA.COLUNAS.SOBRENOME' | translate }}</th>
+                  <th scope="col">{{ 'TABELA.COLUNAS.NOME_SOCIAL' | translate }}</th>
+                  <th scope="col">{{ 'TABELA.COLUNAS.DATA_NASCIMENTO' | translate }}</th>
+                  <th scope="col">{{ 'TABELA.COLUNAS.CPF' | translate }}</th>
+                  <th scope="col">{{ 'TABELA.COLUNAS.OPCOES' | translate }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,13 +23,13 @@
                         <td class="text-center">{{u.dataNascimento | date:'dd/MM/yyyy'}}</td>
                         <td class="cpf text-center" >{{u.cpf | mask:'000.000.000-00'}}</td>
                          <td class="col-2 text-center">
-                          <button type="button" class="btn btn-default" (click)="abreModalStatus(u)" [title]="buscaTituloBotaoStatus(u.ativo)" [attr.aria-label]="buscaTituloBotaoStatus(u.ativo)">
+                          <button type="button" class="btn btn-default" (click)="abreModalStatus(u)" [title]="buscaTituloBotaoStatus(u.ativo) | translate" [attr.aria-label]="buscaTituloBotaoStatus(u.ativo) | translate">
                             <i [ngClass]="u.ativo ? 'bi-check-circle-fill text-success' : 'bi-x-circle-fill text-secondary'"></i>
                           </button>
-                          <button type="button" class="btn btn-default" [routerLink]="['/editar', u.id]" title="Editar Usuário">
+                          <button type="button" class="btn btn-default" [routerLink]="['/editar', u.id]" [title]="'TABELA.ACAO_USUARIO.EDITAR' | translate">
                             <i class="bi bi-pencil"></i>
                           </button>
-                          <button type="button" class="btn btn-default" (click)="abreModalExcluir(u)" title="Excluir Usuário">
+                          <button type="button" class="btn btn-default" (click)="abreModalExcluir(u)" [title]="'TABELA.ACAO_USUARIO.EXCLUIR' | translate">
                             <i class="bi bi-trash"></i>
                           </button>
                         </td>
@@ -35,7 +40,7 @@
     </div>
   <ng-template #semUsuarios>
     <div>
-        <p>Não há usuários cadastrados.</p>
+      <p>{{ 'TABELA.SEM_USUARIOS' | translate }}</p>
     </div>
   </ng-template>
 

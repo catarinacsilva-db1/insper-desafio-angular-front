@@ -2,17 +2,20 @@ export interface IConteudoModal {
   titulo: string;
   corpo: string;
   textoBotaoConfirmar: string;
+  params?: any;
 }
 
 export const MODAL_CONFIG = {
-  STATUS: (nome: string, sobrenome: string, ativo: boolean): IConteudoModal => ({
-    titulo: 'Alteração de Status',
-    corpo: `Deseja alterar o status do usuário ${nome} ${sobrenome} para ${ativo ? 'Inativo' : 'Ativo'}?`,
-    textoBotaoConfirmar: 'Alterar'
+  STATUS: (nome: string, sobrenome: string, statusTexto: string): IConteudoModal => ({
+    titulo: 'MODAL.ALTERACAO_STATUS.TITULO',
+    corpo: 'MODAL.ALTERACAO_STATUS.CORPO',
+    textoBotaoConfirmar: 'BOTAO.ALTERAR',
+    params: { nome, sobrenome, statusTexto }
   }),
   EXCLUIR: (nome: string, sobrenome: string): IConteudoModal => ({
-    titulo: 'Confirmação de Exclusão',
-    corpo: `Deseja excluir o usuário ${nome} ${sobrenome}?`,
-    textoBotaoConfirmar: 'Excluir'
+    titulo: 'MODAL.EXCLUIR.TITULO',
+    corpo: 'MODAL.EXCLUIR.CORPO',
+    textoBotaoConfirmar: 'BOTAO.EXCLUIR',
+    params: { nome, sobrenome }
   })
 };

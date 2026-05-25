@@ -1,0 +1,12 @@
+<div [formGroup]="formPai">
+  <label [for]="campo.labelForCampoCpf" class="form-label">{{ campo.tituloCampoCpf | translate }}</label>
+  <input type="text"
+  class="form-control cpf"
+  [id]="campo.idCampoCpf"
+  [formControlName]="campo.formControlNameCampoCpf"
+  mask="000.000.000-00"
+  [readonly]="validaEdicao">
+  <span *ngIf=" validaCampo " class="text-danger">
+    {{ 'FORMULARIO.VALIDACAO.OBRIGATORIO' | translate:{campo: (campo.tituloCampoCpf | translate)} }}
+  </span>
+</div>

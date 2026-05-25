@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUsuario } from './interfaces/IUsuario';
+import { IUsuario } from '../interfaces/IUsuario';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,8 +12,14 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  obterListaUsuarios() {
-    return this.http.get<IUsuario[]>(this.API);
+  obterListaUsuarios(filtro?: string, termoPesquisa?: string) {
+    let params = new HttpParams()
+      .set('filtro', filtro ?? 'todos')
+      .set('termoPesquisa', termoPesquisa?.trim() ?? '');
+
+      console.log("Parâmetros enviados: " + params.toString());
+
+    return this.http.get<IUsuario[]>(this.API, { params });
   }
 
   obterUsuarioPorId(id: number) {

@@ -1,0 +1,19 @@
+<form [formGroup]="form" class="d-flex justify-content-start gap-4 mb-4">
+    <div class="input-group" style="max-width: 250px;">
+      <label class="input-group-text" for="filtro">{{ 'FILTRO_PESQUISA.FILTRO_PLACEHOLDER' | translate }}</label>
+      <select formControlName="filtro" class="form-select" id="filtro">
+        <option *ngFor="let option of Options" [value]="option.value">
+          {{ option.label | translate }}
+        </option>
+      </select>
+    </div>
+  <div class="input-group">
+    <input type="search" formControlName="termoPesquisa" class="form-control rounded" autofocus [placeholder]="'FILTRO_PESQUISA.BARRA_PLACEHOLDER' | translate" [attr.aria-label]="'FILTRO_PESQUISA.BARRA_PLACEHOLDER' | translate"/>
+    <button type="button" (click)="onBuscar()" class="btn btn-outline-primary" [attr.aria-label]="'FILTRO_PESQUISA.BUSCAR' | translate">
+        <i class="bi bi-search" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button type="button" class="btn btn-link" (click)="limpar()" title="{{ 'FILTRO_PESQUISA.LIMPAR' | translate }}" [attr.aria-label]="'FILTRO_PESQUISA.LIMPAR' | translate">
+     <i class="bi bi-x-circle" aria-hidden="true"></i>
+  </button>
+</form>

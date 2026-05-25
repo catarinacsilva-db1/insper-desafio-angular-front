@@ -1,7 +1,7 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
 import Modal from 'bootstrap/js/dist/modal';
 import { IConteudoModal } from 'src/app/service/constantes/conteudoModal';
-import { UsuarioService } from '../../../service/usuario.service';
+import { UsuarioService } from '../../../service/usuario/usuario.service';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { UsuarioService } from '../../../service/usuario.service';
   styleUrls: ['./modal-confirmacao-usuario.component.css']
 })
 
-export class ModalConfirmacaoUsuarioComponent implements OnInit {
+export class ModalConfirmacaoUsuarioComponent implements OnInit, AfterViewInit {
   @ViewChild('modalConfirmacao') modalConfirmacao!: ElementRef;
   private modal!: Modal;
 
@@ -26,7 +26,7 @@ export class ModalConfirmacaoUsuarioComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.modal = new Modal(this.modalConfirmacao.nativeElement);
-  }//entender ciclos de vida angular
+  }
 
 
   abrir(){

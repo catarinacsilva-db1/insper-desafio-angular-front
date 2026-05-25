@@ -1,6 +1,6 @@
 <form [formGroup]="form" class="d-flex justify-content-start gap-4 mb-4">
     <div class="input-group" style="max-width: 250px;">
-      <label class="input-group-text">{{ 'FILTRO_PESQUISA.FILTRO_PLACEHOLDER' | translate }}</label>
+      <label class="input-group-text" for="filtro">{{ 'FILTRO_PESQUISA.FILTRO_PLACEHOLDER' | translate }}</label>
       <select formControlName="filtro" class="form-select" id="filtro">
         <option *ngFor="let option of Options" [value]="option.value">
           {{ option.label | translate }}

@@ -12,14 +12,16 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  obterListaUsuarios(filtro?: string, termoPesquisa?: string) {
+  obterListaUsuarios(filtro?: string, termoPesquisa?: string, paginaAtual: number = 1, itensPorPagina: number = 5) {
     let params = new HttpParams()
       .set('filtro', filtro ?? 'todos')
-      .set('termoPesquisa', termoPesquisa?.trim() ?? '');
+      .set('termoPesquisa', termoPesquisa?.trim() ?? '')
+      .set('paginaAtual', paginaAtual.toString())
+      .set('tamanhoPagina', itensPorPagina.toString());
 
       console.log("Parâmetros enviados: " + params.toString());
 
-    return this.http.get<IUsuario[]>(this.API, { params });
+    return this.http.get<IUsuario[]>(this.API, { params, observe: 'response' });
   }
 
   obterUsuarioPorId(id: number) {

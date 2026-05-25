@@ -34,7 +34,6 @@ export class FiltroBarraPesquisaComponent implements OnInit {
     const filtro = this.form.get('filtro')?.value;
     const termoPesquisa = this.form.get('termoPesquisa')?.value;
     this.buscar.emit({ filtro, termoPesquisa });
-    console.log("evento emitido: " + filtro + " && " + termoPesquisa);
   }
 
   limpar() {

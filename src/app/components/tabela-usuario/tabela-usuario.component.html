@@ -37,6 +37,14 @@
 
             </tbody>
         </table>
+        <app-paginacao
+          [totalItems]="totalUsuarios"
+          [itensPorPagina]="itensPorPagina"
+          [paginaAtual]="paginaAtual"
+          [totalPaginas]="totalPaginas"
+          (mudaPagina)="onMudaPagina($event)"
+          >
+        </app-paginacao>
     </div>
   <ng-template #semUsuarios>
     <div>

@@ -21,6 +21,15 @@ export class TabelaUsuarioComponent implements OnInit {
     usuariosList: IUsuario[] = [];
     usuarioModal!: IUsuarioModal;
 
+    filtro: string = 'todos';
+    termoPesquisa: string = '';
+
+    paginaAtual: number = 1;
+    itensPorPagina: number = 5;
+    totalUsuarios: number = 0;
+    totalPaginas: number = 1;
+
+
     constructor(
       private usuarioService: UsuarioService,
       private translate: TranslateService) { }
@@ -30,8 +39,18 @@ export class TabelaUsuarioComponent implements OnInit {
     }
 
   listarUsuarios(){
-        this.usuarioService.obterListaUsuarios().subscribe((usuarios) => {
-        this.usuariosList = usuarios;
+        this.usuarioService.obterListaUsuarios(this.filtro, this.termoPesquisa, this.paginaAtual, this.itensPorPagina).subscribe((response) => {
+        this.usuariosList = response.body || [];
+
+        const paginationHeader = response.headers.get('X-Pagination');
+
+        if (paginationHeader) {
+          var paginacao = JSON.parse(paginationHeader);
+          this.totalUsuarios = paginacao.TotalItems;
+          this.paginaAtual = paginacao.CurrentPage;
+          this.totalPaginas = paginacao.TotalPages;
+          console.log('Dados da paginação:', paginacao);
+        }
       });
   }
 
@@ -64,17 +83,23 @@ export class TabelaUsuarioComponent implements OnInit {
   excluirUsuario(){
     if (this.usuarioModal.Id) {
         this.usuarioService.deletarUsuario(this.usuarioModal.Id).subscribe(() => {
-        this.listarUsuarios();
          });
     }
+    this.listarUsuarios();
     this.modalExcluir.fechar();
   }
 
   pesquisarUsuarios($event: { filtro: string, termoPesquisa: string }){
-    console.log("dados:" + $event.filtro + " && " + $event.termoPesquisa);
-    this.usuarioService.obterListaUsuarios($event.filtro, $event.termoPesquisa).subscribe((usuarios) => {
-        this.usuariosList = usuarios;
-      });
+    this.filtro = $event.filtro;
+    this.termoPesquisa = $event.termoPesquisa;
+    this.paginaAtual = 1;
+    this.listarUsuarios();
+  }
+
+  onMudaPagina($event: { pagina: number, itensPorPagina: number }) {
+    this.paginaAtual = $event.pagina;
+    this.itensPorPagina = $event.itensPorPagina;
+    this.listarUsuarios();
   }
 
   private atribuiUsuarioModal(usuario: IUsuario) {

@@ -20,6 +20,7 @@ import { InputTextoComponent } from './components/shared/formulario/input-texto/
 import { ModalConfirmacaoUsuarioComponent } from './components/tabela-usuario/modal-confirmacao-usuario/modal-confirmacao-usuario.component';
 import { TabelaUsuarioComponent } from './components/tabela-usuario/tabela-usuario.component';
 import { BotaoTraducaoComponent } from './components/shared/botao-traducao/botao-traducao.component';
+import { PaginacaoComponent } from './components/shared/paginacao/paginacao.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     InputSenhaComponent,
     FiltroBarraPesquisaComponent,
     BotaoTraducaoComponent,
+    PaginacaoComponent,
   ],
   imports: [
     BrowserModule,

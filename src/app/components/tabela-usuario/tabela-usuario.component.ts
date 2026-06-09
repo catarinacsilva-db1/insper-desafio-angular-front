@@ -46,10 +46,9 @@ export class TabelaUsuarioComponent implements OnInit {
 
         if (paginationHeader) {
           var paginacao = JSON.parse(paginationHeader);
-          this.totalUsuarios = paginacao.totalItems;
-          // this.itensPorPagina = paginacao.itemsPerPage;
-          this.paginaAtual = paginacao.currentPage;
-          this.totalPaginas = paginacao.totalPages;
+          this.totalUsuarios = paginacao.TotalItems;
+          this.paginaAtual = paginacao.CurrentPage;
+          this.totalPaginas = paginacao.TotalPages;
           console.log('Dados da paginação:', paginacao);
         }
       });
@@ -84,9 +83,9 @@ export class TabelaUsuarioComponent implements OnInit {
   excluirUsuario(){
     if (this.usuarioModal.Id) {
         this.usuarioService.deletarUsuario(this.usuarioModal.Id).subscribe(() => {
-        this.listarUsuarios();
          });
     }
+    this.listarUsuarios();
     this.modalExcluir.fechar();
   }
 

@@ -18,8 +18,8 @@ export class PaginacaoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get arrayPaginas(): any[] {
-    return new Array(this.totalPaginas);
+  get arrayPaginas(): number[] {
+    return Array.from({ length: this.totalPaginas }, (_, i) => i + 1);
   }
 
   alterarPagina(pagina: number) {
